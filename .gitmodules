@@ -1,0 +1,9 @@
+[submodule "algorithm/motion-diffusion-model"]
+	path = algorithm/motion-diffusion-model
+	url = https://github.com/GuyTevet/motion-diffusion-model
+[submodule "algorithm/motion-latent-diffusion"]
+	path = algorithm/motion-latent-diffusion
+	url = https://github.com/ChenFengYe/motion-latent-diffusion
+[submodule "algorithm/MotionGPT"]
+	path = algorithm/MotionGPT
+	url = https://github.com/OpenMotionLab/MotionGPT
