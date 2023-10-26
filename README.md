@@ -2,15 +2,15 @@
 
 
 
-# <center>animationGPT</center>
+# animationGPT
 
- <center>Character animation generation based on text-to-motion and large models</center>
+Character animation generation based on text-to-motion and large models
 
 
 
 ## Dataset
 
-Pipline：[HumanML3D](https://github.com/EricGuo5513/HumanML3D)
+pipline：[HumanML3D](https://github.com/EricGuo5513/HumanML3D)
 
 | Version      | Size                          | Notes                                                        |
 | ------------ | ----------------------------- | ------------------------------------------------------------ |
@@ -18,40 +18,6 @@ Pipline：[HumanML3D](https://github.com/EricGuo5513/HumanML3D)
 | soul_v2      | 14993                         | 1. shinnobi和grappling缺失词性标注导致模型训练崩溃。         |
 | soul_v3      | 11662                         | 1. 部分标注异常，例如“The character performs the '忍义手' pose ”；<br />2. 多个标注内容相同（GPT标注问题）。 |
 | soul_v4      |                               | Todo                                                         |
-
-
-
-### soul_v2
-
-| 动画ID      | 是否可用 | 动作类型 | 武器名 | 武器类型 | 攻击类型 | 方位词   | 力量感描述词 | 速度感描述词  | 模糊描述词          |
-| ----------- | -------- | -------- | ------ | -------- | -------- | -------- | ------------ | ------------- | ------------------- |
-| a000_000000 | 是       | Idle     |        |          |          | In-Place | Steady       | Uniform Speed | Relaxing            |
-| a000_000001 | 是       | Idle     |        |          |          | In-Place | Steady       | Uniform Speed | Nervous             |
-| a000_000110 | 否       |          |        |          |          |          |              |               |                     |
-| a000_000112 | 否       |          |        |          |          |          |              |               |                     |
-| a000_000113 | 否       |          |        |          |          |          |              |               |                     |
-| a000_000114 | 否       |          |        |          |          |          |              |               |                     |
-| a000_000115 | 否       |          |        |          |          |          |              |               |                     |
-| a000_001000 | 是       | Idle     |        |          |          | In-Place | Steady       | Uniform Speed | Smooth and Coherent |
-| a000_001001 | 是       | Idle     |        |          |          | In-Place | Powerless    | Relative Slow | Smooth and Coherent |
-| a000_001100 | 是       | Idle     |        |          |          | In-Place | Steady       | Relative Fast | Smooth and Coherent |
-
-### soul_v3
-
-部分标注示例：
-
-| ID           | Desc_CN                                                    | Desc_EN                                                      |
-| ------------ | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| ER000_004070 | 角色无力地挣扎，双臂全身前倾倒下。                         | The character struggles weakly, with both arms leaning forward and  falling down. |
-| ER000_004080 | 角色轻盈地收拢双臂向中间，上半身从后仰恢复直立。           | The character delicately gathers both arms towards the center, and the  upper body straightens up from a leaning position. |
-| ER000_004230 | 角色略微屈膝姿势，快速起身直立。                           | The character slightly bends their knees and quickly stands up straight. |
-| ER000_004240 | 角色半蹲姿势，逐渐起身直立。                               | The character gradually stands up from a half-squatting position. |
-| ER000_004250 | 角色半跪姿势，缓慢起身直立。                               | The character slowly stands up from a half-kneeling position. |
-| ER000_000000 | 角色以空手待机姿势站立静止不动。                           | The character stands still in a neutral stance with empty hands. |
-| ER000_000030 | 角色以双手握持物品的姿势站立静止不动。                     | The character stands still in a stance with both hands holding an item. |
-| ER000_000100 | 角色以扎实的姿势侧身半蹲，左手举起在身前，保持紧张的状态。 | The character takes a solid stance, half squatting and holding their left  hand up in front of them, maintaining a tense state. |
-| ER000_000101 | 角色以轻盈的姿势马步站立，双脚同时后跳，动作流畅连贯。     | The character stands in a light and agile stance, jumping back with both  feet at the same time, performing a smooth and fluid movement. |
-| ER000_000110 | 角色以马步姿势站立，左手紧张地垂放在胸前。                 | The character stands in a stance with one foot forward and one foot back,  with their left hand tensely hanging in front of their chest. |
 
 
 
