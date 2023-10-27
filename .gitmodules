@@ -7,3 +7,6 @@
 [submodule "algorithm/MotionGPT"]
 	path = algorithm/MotionGPT
 	url = https://github.com/OpenMotionLab/MotionGPT
+[submodule "algorithm/HumanML3D"]
+	path = algorithm/HumanML3D
+	url = https://github.com/EricGuo5513/HumanML3D
