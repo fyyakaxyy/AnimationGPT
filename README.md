@@ -19,11 +19,11 @@ Character animation generation based on text-to-motion and large models
 | soul_v3      | 11662                         | 1. 部分标注异常，例如“The character performs the '忍义手' pose ”；<br />2. 多个标注内容相同（GPT标注问题）。 |
 | soul_v4      |                               | Todo                                                         |
 
-[dataset.md](.\dataset\dataset.md)
+[dataset.md](./dataset/dataset.md)
 
 ## Experiment and Animation
 
-[animation.md](.\animation\animation.md)
+[animation.md](./animation/animation.md)
 
 ### soul_v3
 
