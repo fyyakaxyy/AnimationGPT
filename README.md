@@ -10,7 +10,7 @@ Character animation generation based on text-to-motion and large models
 
 ## Dataset
 
-pipline：[HumanML3D](https://github.com/EricGuo5513/HumanML3D)
+
 
 | Version      | Size                          | Notes                                                        |
 | ------------ | ----------------------------- | ------------------------------------------------------------ |
@@ -19,11 +19,11 @@ pipline：[HumanML3D](https://github.com/EricGuo5513/HumanML3D)
 | soul_v3      | 11662                         | 1. 部分标注异常，例如“The character performs the '忍义手' pose ”；<br />2. 多个标注内容相同（GPT标注问题）。 |
 | soul_v4      |                               | Todo                                                         |
 
-
+[dataset.md](.\dataset\dataset.md)
 
 ## Experiment and Animation
 
-
+[animation.md](.\animation\animation.md)
 
 ### soul_v3
 
@@ -50,9 +50,10 @@ pipline：[HumanML3D](https://github.com/EricGuo5513/HumanML3D)
 | R_precision (gt top 1)↑                        | -                 | 0.0935±0.0017     | 0.0929±0.0019     |
 | R_precision  (gt top 2)↑                       | -                 | 0.1549±0.0029     | 0.1586±0.0023     |
 | R_precision (gt top 3)↑                        | -                 | 0.2128±0.0035     | 0.2130±0.0029     |
-| FID↓                                           | 0.0147±0.0004     | 1.0979±0.0337     | 1.3792±0.0498     |
+| FID↓                                           | **0.8895±0.0369** | 1.0979±0.0337     | 1.3792±0.0498     |
 | Diversity→                                     | 5.6927±0.0331     | **5.7232±0.0613** | 5.7904±0.0510     |
 | Diversity  (vald)→ <br />(gt for MLD/mGPT)     | 5.8120±0.0555     | 5.8062±0.0386     | 5.6903±0.0740     |
 | MultiModality ↑                                | None              | 1.9912±0.0469     | **3.6207±0.0872** |
 
 综合上述指标，MDM在条件匹配程度上表现较好，MLD在生成质量上表现较好，mGPT在生成多样性上表现较好。
+

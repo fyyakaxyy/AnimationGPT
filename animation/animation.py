@@ -12,12 +12,12 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 import mpl_toolkits.mplot3d.axes3d as p3
 from tqdm import tqdm
 
-def plot_3d_motion(save_path, kinematic_tree, joints, title, figsize=(10, 10), fps=120, radius=4):
+def plot_3d_motion(save_path, kinematic_tree, joints, figsize=(10, 10), fps=120, radius=4):
     def init():
         ax.set_xlim3d([-radius / 2, radius / 2])
         ax.set_ylim3d([0, radius])
         ax.set_zlim3d([0, radius])
-        fig.suptitle(title, fontsize=20)
+        # fig.suptitle(title, fontsize=20)
         ax.grid(b=False)
 
     def plot_xz_plane(minx, maxx, miny, minz, maxz):
@@ -97,7 +97,8 @@ def process_npy_files(src_dir, tgt_ani_dir, kinematic_chain):
 
         if os.path.exists(save_path):
             continue
-        plot_3d_motion(save_path, kinematic_chain, data, title="None", fps=20, radius=4)
+        # plot_3d_motion(save_path, kinematic_chain, data, title="None", fps=20, radius=4)
+        plot_3d_motion(save_path, kinematic_chain, data, fps=20, radius=4)
 
 if __name__ == "__main__":
     src_dir = 'test'
