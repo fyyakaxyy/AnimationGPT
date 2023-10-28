@@ -57,3 +57,15 @@ Character animation generation based on text-to-motion and large models
 
 综合上述指标，MDM在条件匹配程度上表现较好，MLD在生成质量上表现较好，mGPT在生成多样性上表现较好。
 
+### HSmerge
+
+#### animations
+
+|             MDM（训练崩溃）             | MLD  |                 mGPT                  |
+| :-------------------------------------: | :--: | :-----------------------------------: |
+| ![sample24](README.assets/sample24.gif) |      | ![352_out](README.assets/352_out.gif) |
+|                  同上                   |      | ![380_out](README.assets/380_out.gif) |
+|                  同上                   |      | ![657_out](README.assets/657_out.gif) |
+
+
+
