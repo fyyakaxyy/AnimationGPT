@@ -11,8 +11,8 @@ output_folder = 'gif'
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
-output_width = 120
-output_height = 120
+output_width = 256
+output_height = 256
 
 mp4_files = [f for f in os.listdir(input_folder) if f.endswith('.mp4')]
 

@@ -101,8 +101,8 @@ def process_npy_files(src_dir, tgt_ani_dir, kinematic_chain):
         plot_3d_motion(save_path, kinematic_chain, data, fps=20, radius=4)
 
 if __name__ == "__main__":
-    src_dir = 'test'
-    tgt_ani_dir = "test/animation"
+    src_dir = 'mld'
+    tgt_ani_dir = src_dir + "/animation"
     kinematic_chain = [[0, 2, 5, 8, 11], [0, 1, 4, 7, 10], [0, 3, 6, 9, 12, 15], [9, 14, 17, 19, 21], [9, 13, 16, 18, 20]]
     os.makedirs(tgt_ani_dir, exist_ok=True)
 
