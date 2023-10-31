@@ -82,7 +82,7 @@
 | ER000_000101 | 角色以轻盈的姿势马步站立，双脚同时后跳，动作流畅连贯。     | The character stands in a light and agile stance, jumping back with both  feet at the same time, performing a smooth and fluid movement. |
 | ER000_000110 | 角色以马步姿势站立，左手紧张地垂放在胸前。                 | The character stands in a stance with one foot forward and one foot back,  with their left hand tensely hanging in front of their chest. |
 
-
+文本标注有重复的情况：5个重复（12）、4个重复（19）、3个重复（153）、2个重复（863）
 
 
 
