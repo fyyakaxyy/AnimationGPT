@@ -14,9 +14,9 @@ Character animation generation based on text-to-motion and large models
 
 | Version      | Size                          | Notes                                                        |
 | ------------ | ----------------------------- | ------------------------------------------------------------ |
-| soul_v1(old) | 30368(with mirror)<br />15473 | 1. 删除了镜像npy（mirror）后文件数是15473；<br />2. 注意：Mean.npy和Std.npy的计算不包括镜像文件 |
+| soul_v1(old) | 30368(with mirror)<br />15473 | 1. 删除了镜像npy（mirror）后文件数是15473；<br />2. 注意：Mean.npy和Std.npy的计算不包括镜像文件。 |
 | soul_v2      | 14993                         | 1. shinnobi和grappling缺失词性标注导致模型训练崩溃。         |
-| soul_v3      | 11662                         | 1. 部分标注异常，例如“The character performs the '忍义手' pose ”；<br />2. 多个标注内容相同（GPT标注问题）。 |
+| soul_v3      | 11662                         | 1. 部分标注异常，例如“The character performs the '忍义手' pose ”；<br />2. 多个标注内容重复（GPT标注问题）：<br />其中5个重复（12）、4个重复（19）、3个重复（153）、2个重复（863）。 |
 | soul_v4      |                               | Todo                                                         |
 
 
@@ -36,6 +36,14 @@ Character animation generation based on text-to-motion and large models
 - MDM训练崩溃
 - MLD的foot slide问题比较明显
 
+**Render on SMPL(mGPT)**
+
+|  ![84_out_mesh](README.assets/84_out_mesh.gif)  |  ![98_out_mesh](README.assets/98_out_mesh.gif)  | ![103_out_mesh](README.assets/103_out_mesh.gif) |
+| :---------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: |
+| ![118_out_mesh](README.assets/118_out_mesh.gif) | ![153_out_mesh](README.assets/153_out_mesh.gif) | ![203_out_mesh](README.assets/203_out_mesh.gif) |
+
+
+
 **evaluation**
 
 | **Metric**                                     |      **MDM**      |      **MLD**      |     **mGPT**      |
@@ -53,3 +61,4 @@ Character animation generation based on text-to-motion and large models
 | Diversity  (vald)→ <br />(gt for MLD/mGPT)     |   0.6601±0.0156   | **8.5630±0.0656** |   8.5648±0.0603   |
 | MultiModality ↑                                |       None        | **2.5846±0.0875** |   5.8888±0.1620   |
 
+和soul_v3的评估结果相比，混合训练在各指标上都有明显的提升，这得益于数据集的扩充。
