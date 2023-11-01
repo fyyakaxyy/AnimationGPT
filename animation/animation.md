@@ -4,6 +4,13 @@
 
 # animationResult
 
+How to use?
+
+- matplotlib==3.3.3
+- `mGPT_npy_Rename.py`用于给mGPT输出的out.npy文件重命名，保证和采样excel中要求的名称一致。和`animationWithTitle.py`配套使用。
+
+
+
 ## soul_v3
 
 |                          MDM                           |                             MLD                              |                   mGPT                   |

@@ -1,10 +1,4 @@
-"""
-骨骼渲染动画
-npy2mp4
-
-matplotlib==3.3.3
-"""
-
+"""matplotlib==3.3.3"""
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -14,12 +8,12 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 import mpl_toolkits.mplot3d.axes3d as p3
 from tqdm import tqdm
 
-def plot_3d_motion(save_path, kinematic_tree, joints, figsize=(10, 10), fps=120, radius=4):
-    def init():
+def plot_3d_motion(save_path, kinematic_tree, joints, title, figsize=(10, 10), fps=120, radius=4):
+    def init(fig, ax):
         ax.set_xlim3d([-radius / 2, radius / 2])
         ax.set_ylim3d([0, radius])
         ax.set_zlim3d([0, radius])
-        # fig.suptitle(title, fontsize=20)
+        fig.suptitle(title, fontsize=20)
         ax.grid(b=False)
 
     def plot_xz_plane(minx, maxx, miny, minz, maxz):
@@ -29,14 +23,14 @@ def plot_3d_motion(save_path, kinematic_tree, joints, figsize=(10, 10), fps=120,
             [maxx, miny, maxz],
             [maxx, miny, minz]
         ]
-        xz_plane = Poly3DCollection([verts])
-        xz_plane.set_facecolor((0.5, 0.5, 0.5, 0.5))
+        xz_plane = Poly3DCollection([verts], alpha=0.5)
+        xz_plane.set_facecolor((0.5, 0.5, 0.5))
         ax.add_collection3d(xz_plane)
 
     data = joints.copy().reshape(len(joints), -1, 3)  # (seq_len, joints_num, 3)
     fig = plt.figure(figsize=figsize)
     ax = p3.Axes3D(fig)
-    init()
+    init(fig, ax)
     MINS = data.min(axis=0).min(axis=0)
     MAXS = data.max(axis=0).max(axis=0)
     colors = ['red', 'blue', 'black', 'red', 'blue',
@@ -91,7 +85,8 @@ def process_npy_files(src_dir, tgt_ani_dir, kinematic_chain):
         assert data.shape[-2:] == (22, 3), f"Unexpected data shape for file: {npy_file}"
 
         relative_path = os.path.relpath(npy_file, src_dir)
-        save_path = os.path.join(tgt_ani_dir, relative_path[:-4] + '.mp4')
+        npy_filename = os.path.splitext(os.path.basename(npy_file))[0]
+        save_path = os.path.join(tgt_ani_dir, f"{npy_filename}.mp4")
         save_dir = os.path.dirname(save_path)
 
         if not os.path.exists(save_dir):
@@ -99,12 +94,11 @@ def process_npy_files(src_dir, tgt_ani_dir, kinematic_chain):
 
         if os.path.exists(save_path):
             continue
-        # plot_3d_motion(save_path, kinematic_chain, data, title="None", fps=20, radius=4)
-        plot_3d_motion(save_path, kinematic_chain, data, fps=20, radius=4)
+        plot_3d_motion(save_path, kinematic_chain, data, title=npy_filename, fps=30, radius=4)
 
 if __name__ == "__main__":
-    src_dir = 'mld'
-    tgt_ani_dir = src_dir + "/animation"
+    src_dir = 'HSmerge\MLD\\npy'
+    tgt_ani_dir = os.path.join(src_dir, "animation")
     kinematic_chain = [[0, 2, 5, 8, 11], [0, 1, 4, 7, 10], [0, 3, 6, 9, 12, 15], [9, 14, 17, 19, 21], [9, 13, 16, 18, 20]]
     os.makedirs(tgt_ani_dir, exist_ok=True)
 
