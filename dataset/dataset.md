@@ -82,7 +82,29 @@
 | ER000_000101 | 角色以轻盈的姿势马步站立，双脚同时后跳，动作流畅连贯。     | The character stands in a light and agile stance, jumping back with both  feet at the same time, performing a smooth and fluid movement. |
 | ER000_000110 | 角色以马步姿势站立，左手紧张地垂放在胸前。                 | The character stands in a stance with one foot forward and one foot back,  with their left hand tensely hanging in front of their chest. |
 
-文本标注有重复的情况：5个重复（12）、4个重复（19）、3个重复（153）、2个重复（863）
+**数据集存在问题**
+
+1. 文本标注有重复的情况：5个重复（12）、4个重复（19）、3个重复（153）、2个重复（863）；
+
+2. 根据采样标注寻找原始的motion.npy（需求759个，目前找到746个），以下几个数据缺失：
+
+   ```
+   BB129_052160
+   ER032_032400
+   ER032_032500
+   ER342_090103
+   ER032_032501
+   ER032_032620
+   ER032_032300
+   ER032_032210
+   BB129_052165
+   BB000_004110
+   BB129_052163
+   BB129_052162
+   ER032_032621
+   ```
+
+   处理：已删除，此后使用746采样版本。
 
 
 
