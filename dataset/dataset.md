@@ -27,41 +27,41 @@
 
 **数据集存在问题**
 
-- 数据读取问题
+1. **数据读取问题**
 
-  ```
-  ValueError: Caught ValueError in DataLoader worker process 1.
-  ```
+   ```
+   ValueError: Caught ValueError in DataLoader worker process 1.
+   ```
 
-  **处理方法：**设置num_works=0
+   **处理方法：**设置num_works=0
 
-- 词性标注问题
+2. **词性标注问题**
 
-  FID的计算会导致训练崩溃
+   FID的计算会导致训练崩溃
 
-  ```
-    File "/root/autodl-tmp/motion-latent-diffusion/mld/models/metrics/tm2t.py", line 147, in compute
-      metrics["FID"] = calculate_frechet_distance_np(gt_mu, gt_cov, mu, cov)
-    File "/root/autodl-tmp/motion-latent-diffusion/mld/models/metrics/utils.py", line 205, in calculate_frechet_distance_np
-      raise ValueError("Imaginary component {}".format(m))
-  ValueError: Imaginary component 34786744.5361432
-  ```
+   ```
+     File "/root/autodl-tmp/motion-latent-diffusion/mld/models/metrics/tm2t.py", line 147, in compute
+       metrics["FID"] = calculate_frechet_distance_np(gt_mu, gt_cov, mu, cov)
+     File "/root/autodl-tmp/motion-latent-diffusion/mld/models/metrics/utils.py", line 205, in calculate_frechet_distance_np
+       raise ValueError("Imaginary component {}".format(m))
+   ValueError: Imaginary component 34786744.5361432
+   ```
 
-  ```
-  line 66, in __getitem__
-      word, pos = item.split('/')
-  ValueError: not enough values to unpack (expected 2, got 1)
-  ```
+   ```
+   line 66, in __getitem__
+       word, pos = item.split('/')
+   ValueError: not enough values to unpack (expected 2, got 1)
+   ```
 
-  ![image-20231026192755754](dataset.assets/image-20231026192755754.png)
+   ![image-20231026192755754](dataset.assets/image-20231026192755754.png)
 
-  错误原因：shinnobi和grappling缺少词性标注。以shinnobi为例：
+   **错误原因：**shinnobi和grappling缺少词性标注。以shinnobi为例：
 
-  ```
-  shinnobi prosthetic finger whistle left-handed charged heavy attack in-place light-weighted straightforward uniform speed smooth and coherent relaxing squatting position the left hand on the mouth the body to the right behind the body is turned towards the front whistle resume the squatting position #shinnobi prosthetic/ADJ finger/NOUN whistle/NOUN left/ADV -/PUNCT handed/ADJ charged/VERB heavy/ADJ attack/NOUN in/ADP -/PUNCT place/NOUN light/NOUN -/PUNCT weighted/ADJ straightforward/ADJ uniform/ADJ speed/NOUN smooth/ADJ and/CCONJ coherent/ADJ relaxing/VERB squatting/VERB position/NOUN  the/DET left/ADJ hand/NOUN on/ADP the/DET mouth/NOUN  the/DET body/NOUN to/ADP the/DET right/NOUN behind/ADP the/DET body/NOUN is/AUX turned/VERB towards/ADP the/DET front/ADJ whistle/NOUN  resume/VERB the/DET squatting/NOUN position/NOUN #0.0#0.0
-  ```
+   ```
+   shinnobi prosthetic finger whistle left-handed charged heavy attack in-place light-weighted straightforward uniform speed smooth and coherent relaxing squatting position the left hand on the mouth the body to the right behind the body is turned towards the front whistle resume the squatting position #shinnobi prosthetic/ADJ finger/NOUN whistle/NOUN left/ADV -/PUNCT handed/ADJ charged/VERB heavy/ADJ attack/NOUN in/ADP -/PUNCT place/NOUN light/NOUN -/PUNCT weighted/ADJ straightforward/ADJ uniform/ADJ speed/NOUN smooth/ADJ and/CCONJ coherent/ADJ relaxing/VERB squatting/VERB position/NOUN  the/DET left/ADJ hand/NOUN on/ADP the/DET mouth/NOUN  the/DET body/NOUN to/ADP the/DET right/NOUN behind/ADP the/DET body/NOUN is/AUX turned/VERB towards/ADP the/DET front/ADJ whistle/NOUN  resume/VERB the/DET squatting/NOUN position/NOUN #0.0#0.0
+   ```
 
-  **处理方法：**删除全部含有`shinnobi`和`grappling`数据。
+   **处理方法：**删除全部含有`shinnobi`和`grappling`数据。
 
 
 
@@ -84,11 +84,11 @@
 
 **数据集存在问题**
 
-1. 文本标注有重复的情况：5个重复（12）、4个重复（19）、3个重复（153）、2个重复（863）；
+1. **文本标注有重复的情况：**5个重复（12）、4个重复（19）、3个重复（153）、2个重复（863）；
 
    其实这不算是太大的问题，因为占比很少的重复数据对模型的影响并不大。类似的，HumanML3D中也有很多重复的数据，例如走路、跑步这类常见的动作。
 
-2. 根据采样标注寻找原始的motion.npy（需求759个，目前找到746个），以下几个数据缺失：
+2. 根据采样标注寻找原始的motion.npy（需求759个，目前找到746个），以下几个**数据缺失**：
 
    ```
    BB129_052160
@@ -108,7 +108,7 @@
 
    处理：已删除，此后使用746采样版本。
 
-3. 动作类型有偏。动作类游戏当中的动画风格相对来说是集中的。
+3. **动作类型有偏。**动作类游戏当中的动画风格相对来说是集中的。
 
 ## soul_v4
 
