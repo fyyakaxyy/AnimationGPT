@@ -6,7 +6,7 @@
 
 ## soul_v1
 
-删除mirror文件和[NaN文件](https://github.com/GuyTevet/motion-diffusion-model/issues/110)
+也就是最初的old文件。删除了mirror文件和[NaN文件](https://github.com/GuyTevet/motion-diffusion-model/issues/110)。
 
 ## soul_v2
 
@@ -25,7 +25,7 @@
 | a000_001001 | 是       | Idle     |        |          |          | In-Place | Powerless    | Relative Slow | Smooth and Coherent |
 | a000_001100 | 是       | Idle     |        |          |          | In-Place | Steady       | Relative Fast | Smooth and Coherent |
 
-**debug**
+**数据集存在问题**
 
 - 数据读取问题
 
@@ -86,6 +86,8 @@
 
 1. 文本标注有重复的情况：5个重复（12）、4个重复（19）、3个重复（153）、2个重复（863）；
 
+   其实这不算是太大的问题，因为占比很少的重复数据对模型的影响并不大。类似的，HumanML3D中也有很多重复的数据，例如走路、跑步这类常见的动作。
+
 2. 根据采样标注寻找原始的motion.npy（需求759个，目前找到746个），以下几个数据缺失：
 
    ```
@@ -106,9 +108,14 @@
 
    处理：已删除，此后使用746采样版本。
 
-
+3. 动作类型有偏。动作类游戏当中的动画风格相对来说是集中的。
 
 ## soul_v4
 
-todo
+***todo***
+
+繁简双标注
+
+- “一个人蓄力重击挥出大剑。”
+- “一个人扎马步，左脚为轴，右脚发力向前，双臂随着腰向前蓄力挥动大剑。”
 
