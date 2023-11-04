@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation</title>
+    <title>animationGPT</title>
     <style>
         body {
             margin: 0;
@@ -47,7 +47,7 @@
         }
 
         .column img {
-            max-width: 75%;
+            max-width: 100%;
             /* 图片最大宽度为75% */
             height: auto;
             /* 图片高度自动 */
@@ -59,17 +59,39 @@
             /* 图片阴影 */
         }
 
+        .main-image img {
+            display: block;
+            /* 设置图片为块级元素 */
+            max-width: 100%;
+            /* 图片最大宽度为容器的100%，从而保持响应式 */
+            height: auto;
+            /* 高度自适应 */
+            margin: 20px auto;
+            /* 上下保留空白，左右自动（实现居中） */
+            transition: opacity 5.5s ease;
+
+        }
+
         h2 {
             text-align: center;
             font-size: 12px;
-            /* 设置字体大小为24像素 */
         }
 
         /* 添加标题 */
         h1 {
             text-align: center;
+            font-size: 100px;
             margin-top: 20px;
             /* 添加一些顶部边距 */
+        }
+
+        .github-link {
+            text-align: center;
+            font-size: 50px;
+            display: block;
+            margin-top: 10px;
+            color: blue;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -77,11 +99,35 @@
 <body>
 
     <h1>animationGPT</h1>
+    <div style="text-align: center;">
+        <a class="github-link" href="https://github.com/fyyakaxyy/animationGPT">GitHub</a>
+    </div>
+    <div class="main-image">
+        <img src="webVis\mainPage.png" alt="主页图片">
+    </div>
+    <script>
+        // 获取图片元素
+        var image = document.querySelector('.main-image img');
 
-    <details open>
+        // 监听滚动事件
+        window.onscroll = function () {
+            // 检查页面是否向下滚动（页面顶部的位置是否大于0）
+            if (window.pageYOffset > 0) {
+                // 设置图片透明度为0来隐藏图片
+                image.style.opacity = '0';
+            } else {
+                // 如果页面滚动回顶部，恢复图片显示
+                image.style.opacity = '1';
+            }
+        };
+    </script>
+
+
+
+    <!-- <details open>
         <summary>Visualization of SMPL</summary>
         <p>todo</p>
-    </details>
+    </details> -->
 
     <div class="gallery">
         <!-- prompts -->
