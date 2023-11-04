@@ -34,6 +34,38 @@ Character animation generation based on text-to-motion and large models
 
 当前页面只展示最新结果，其它结果：[animation.md](./animation/animation.md)
 
+### Finetune-H+S3
+
+| MDM  |                            mGPT                             |
+| :--: | :---------------------------------------------------------: |
+| todo | ![DS3042_030500_mGPT](README.assets/DS3042_030500_mGPT.gif) |
+| todo | ![DS3028_030320_mGPT](README.assets/DS3028_030320_mGPT.gif) |
+| todo | ![DS3038_030340_mGPT](README.assets/DS3038_030340_mGPT.gif) |
+
+- 相较于单独训练和混合训练，微调的效果最差，语义理解错误，动作扭曲。
+- 但是微调模型生成的动作序列时间更长。
+
+**evaluation**
+
+| Metric                                   | mGPT          |
+| ---------------------------------------- | ------------- |
+| Matching Score↓                          | 6.1942±0.0127 |
+| Matching Score (vald)↓ (gt for MLD/mGPT) | 5.5185±0.0043 |
+| R_precision (top 1)↑                     | 0.0364±0.0018 |
+| R_precision (top 2)↑                     | 0.0697±0.0029 |
+| R_precision (top 3)↑                     | 0.1043±0.0037 |
+| R_precision (gt top 1)↑                  | 0.0929±0.0019 |
+| R_precision (gt top 2)↑                  | 0.1586±0.0023 |
+| R_precision (gt top 3)↑                  | 0.2130±0.0029 |
+| FID↓                                     | 1.9095±0.0342 |
+| Diversity→                               | 4.6923±0.0325 |
+| Diversity (vald)→ (gt for  MLD/mGPT)     | 5.6903±0.0740 |
+| MultiModality ↑                          | 2.9249±0.0914 |
+
+**从评估指标来看，效果也明显变差。**
+
+
+
 ### HSmerge
 
 |                   MDM                   |                             MLD                              |                 mGPT                  |
