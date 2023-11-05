@@ -34,6 +34,8 @@
             /* 设置子元素垂直排列 */
             align-items: center;
             /* 在垂直方向上居中对齐子元素 */
+            background-color: white;
+            /* 添加白色背景 */
         }
 
         .descriptions {
@@ -82,14 +84,23 @@
             text-align: center;
             font-size: 100px;
             margin-top: 20px;
-            /* 添加一些顶部边距 */
+            margin-bottom: 20px;
+            background-image: linear-gradient(45deg, #335fff, #00eeff);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-style: italic;
+            display: inline-block;
+            transform: skewX(-10deg);
+            /* 控制斜体程度 */
+            width: 100%;
         }
 
         .github-link {
             text-align: center;
-            font-size: 50px;
+            font-size: 30px;
             display: block;
             margin-top: 10px;
+            /* 减小上方外边距 */
             color: blue;
             text-decoration: none;
         }
@@ -123,9 +134,11 @@
     </script>
 
 
-
-    <!-- <details open>
+    <!-- 
+    <details open>
         <summary>Visualization of SMPL</summary>
+        <img src="webVis\gif\original_animation_gif\BB_000_003102_original.gif">
+        <img src="webVis\gif\original_animation_gif\BB_000_003103_original.gif">
         <p>todo</p>
     </details> -->
 
