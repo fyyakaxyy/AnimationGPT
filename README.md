@@ -42,7 +42,7 @@ Character animation generation based on text-to-motion and large models
 - 相较于单独训练和混合训练，微调的效果最差，语义理解错误，动作扭曲。
 - 但是微调模型生成的动作序列时间更长。
 
-**evaluation**
+**evaluation on mGPT**
 
 | Metric                                   | soul_v3           | HSmerge           | Finetune-H+S3 |
 | ---------------------------------------- | ----------------- | ----------------- | ------------- |
