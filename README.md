@@ -4,9 +4,9 @@
 
 # animationGPT
 
-Character animation generation based on text-to-motion and large models
+[webpage](https://fyyakaxyy.github.io/animationGPT/)
 
-全部实验的可视化结果见`webShow.html`，暂未部署到服务器，需要git到本地查看。
+Character animation generation based on text-to-motion and large models
 
 ## Dataset
 
@@ -18,15 +18,6 @@ Character animation generation based on text-to-motion and large models
 | soul_v2      | 14993                         | 1. shinnobi和grappling缺失词性标注导致模型训练崩溃。         |
 | soul_v3      | 11662                         | 1. 部分标注异常，例如“The character performs the '忍义手' pose ”；<br />2. 多个标注内容重复（GPT标注问题）：<br />其中5个重复（12）、4个重复（19）、3个重复（153）、2个重复（863）。 |
 | soul_v4      |                               | Todo                                                         |
-
-
-
-**visualization**
-
-| ![BB_000_007151_original](README.assets/BB_000_007151_original.gif) | ![BB_000_019560_original](README.assets/BB_000_019560_original.gif) | ![DS3_020_030321_original](README.assets/DS3_020_030321_original.gif) |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![DS3_020_034341_original](README.assets/DS3_020_034341_original.gif) | ![DS3_025_034020_original](README.assets/DS3_025_034020_original.gif) | ![DS3_029_032030_original](README.assets/DS3_029_032030_original.gif) |
-| ![DS3_154_036230_original](README.assets/DS3_154_036230_original.gif) | ![ER_033_030605_original](README.assets/ER_033_030605_original.gif) | ![SKR_106_316300_original](README.assets/SKR_106_316300_original.gif) |
 
 
 
