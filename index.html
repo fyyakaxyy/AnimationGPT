@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animationGPT</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .gallery {
+            display: flex;
+            /* 使用flex布局 */
+            justify-content: center;
+            flex-wrap: wrap;
+            /* 允许子元素在必要时换行 */
+            padding: 20px;
+        }
+
+        .column {
+            flex: 1;
+            /* flex属性让每个子元素占据相同的空间 */
+            padding: 0 10px;
+            /* 左右内边距 */
+            display: flex;
+            /* 使用flex布局 */
+            flex-direction: column;
+            /* 设置子元素垂直排列 */
+            align-items: center;
+            /* 在垂直方向上居中对齐子元素 */
+            background-color: white;
+            /* 添加白色背景 */
+        }
+
+        .descriptions {
+            max-width: 20%;
+            /* 设置描述列的最大宽度 */
+        }
+
+        .descriptions p {
+            margin-bottom: 20px;
+            /* 每个描述段落下方的外边距 */
+        }
+
+        .column img {
+            max-width: 100%;
+            height: auto;
+            /* 图片高度自动 */
+            margin-bottom: 20px;
+            /* 图片下方的外边距 */
+            border-radius: 8px;
+            /* 图片边框圆角 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* 图片阴影 */
+        }
+
+        .main-image img {
+            max-width: 100%;
+            height: auto;
+            /* 图片高度自适应 */
+            margin: 20px auto;
+            /* 上下保留空白，左右自动（实现居中） */
+            transition: opacity 5.5s ease;
+            width: 100%;
+            /* 让图片宽度自适应 */
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* 添加标题 */
+        h1 {
+            text-align: center;
+            font-size: 100px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-image: linear-gradient(45deg, #335fff, #00eeff);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-style: italic;
+            display: inline-block;
+            transform: skewX(-10deg);
+            /* 控制斜体程度 */
+            width: 100%;
+        }
+
+        .github-link {
+            text-align: center;
+            font-size: 30px;
+            display: block;
+            margin-top: 10px;
+            /* 减小上方外边距 */
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>animationGPT</h1>
+    <div style="text-align: center;">
+        <a class="github-link" href="https://github.com/fyyakaxyy/animationGPT">GitHub</a>
+    </div>
+    <div class="main-image">
+        <img src="webVis\mainPage.png" alt="主页图片">
+    </div>
+    <script>
+        // 获取图片元素
+        var image = document.querySelector('.main-image img');
+
+        // 监听滚动事件
+        window.onscroll = function () {
+            // 检查页面是否向下滚动（页面顶部的位置是否大于0）
+            if (window.pageYOffset > 0) {
+                // 设置图片透明度为0来隐藏图片
+                image.style.opacity = '0';
+            } else {
+                // 如果页面滚动回顶部，恢复图片显示
+                image.style.opacity = '1';
+            }
+        };
+    </script>
+
+
+    <!-- 
+    <details open>
+        <summary>Visualization of SMPL</summary>
+        <img src="webVis\gif\original_animation_gif\BB_000_003102_original.gif">
+        <img src="webVis\gif\original_animation_gif\BB_000_003103_original.gif">
+        <p>todo</p>
+    </details> -->
+
+    <div class="gallery">
+        <!-- prompts -->
+        <!-- <div class="descriptions">
+        <h2>text</h2>
+        <p>The character's hands hang naturally at the sides of their body, their body's center of gravity slightly lowered, and they move slowly to the left.</p>
+        <p>The character's hands hang naturally at the sides of their body, their body's center of gravity slightly lowered, and they move slowly to the right.</p>
+        </div> -->
+
+        <!-- original-smpl
+        <div class="column">
+            <h2>Original-SMPL</h2>
+
+        </div> -->
+
+        <!-- original -->
+        <div class="column">
+            <h2>Original</h2>
+            <img src="webVis\static\original_animation\BB_000_003102_original.gif">
+            <img src="webVis\static\original_animation\BB_000_004000_original.gif">
+            <img src="webVis\static\original_animation\BB_000_006100_original.gif">
+            <img src="webVis\static\original_animation\BB_000_007150_original.gif">
+            <img src="webVis\static\original_animation\BB_000_007400_original.gif">
+            <img src="webVis\static\original_animation\BB_000_007402_original.gif">
+            <img src="webVis\static\original_animation\BB_000_020200_original.gif">
+            <img src="webVis\static\original_animation\DS3_020_030010_original.gif">
+            <img src="webVis\static\original_animation\DS3_020_030020_original.gif">
+            <img src="webVis\static\original_animation\DS3_026_030320_original.gif">
+            <img src="webVis\static\original_animation\DS3_026_030321_original.gif">
+            <img src="webVis\static\original_animation\DS3_027_032060_original.gif">
+            <img src="webVis\static\original_animation\DS3_028_036410_original.gif">
+            <img src="webVis\static\original_animation\DS3_028_036420_original.gif">
+            <img src="webVis\static\original_animation\DS3_029_030500_original.gif">
+            <img src="webVis\static\original_animation\DS3_029_036240_original.gif">
+            <img src="webVis\static\original_animation\DS3_030_030600_original.gif">
+            <img src="webVis\static\original_animation\DS3_032_034000_original.gif">
+            <img src="webVis\static\original_animation\DS3_038_034320_original.gif">
+            <img src="webVis\static\original_animation\DS3_042_030321_original.gif">
+            <img src="webVis\static\original_animation\DS3_051_036400_original.gif">
+            <img src="webVis\static\original_animation\ER_000_005450_original.gif">
+            <img src="webVis\static\original_animation\ER_000_017070_original.gif">
+            <img src="webVis\static\original_animation\ER_000_060170_original.gif">
+            <img src="webVis\static\original_animation\ER_000_080500_original.gif">
+            <img src="webVis\static\original_animation\ER_000_080600_original.gif">
+            <img src="webVis\static\original_animation\ER_000_080700_original.gif">
+            <img src="webVis\static\original_animation\ER_000_080800_original.gif">
+            <img src="webVis\static\original_animation\SKR_071_402000_original.gif">
+            <img src="webVis\static\original_animation\SKR_073_400010_original.gif">
+            <img src="webVis\static\original_animation\SKR_102_316210_original.gif">
+            <img src="webVis\static\original_animation\SKR_103_316000_original.gif">
+            <img src="webVis\static\original_animation\SKR_106_316110_original.gif">
+
+        </div>
+
+        <!-- Soul-v3 -->
+        <div class="column">
+            <h2>Soul-v3</h2>
+            <img src="webVis\static\soul_v3\BB000_003102_mGPT.gif">
+            <img src="webVis\static\soul_v3\BB000_004000_mGPT.gif">
+            <img src="webVis\static\soul_v3\BB000_006100_mGPT.gif">
+            <img src="webVis\static\soul_v3\BB000_007150_mGPT.gif">
+            <img src="webVis\static\soul_v3\BB000_007400_mGPT.gif">
+            <img src="webVis\static\soul_v3\BB000_007402_mGPT.gif">
+            <img src="webVis\static\soul_v3\BB000_020200_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3020_030010_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3020_030020_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3026_030320_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3026_030321_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3027_032060_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3028_036410_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3028_036420_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3029_030500_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3029_036240_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3030_030600_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3032_034000_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3038_034320_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3042_030321_mGPT.gif">
+            <img src="webVis\static\soul_v3\DS3051_036400_mGPT.gif">
+            <img src="webVis\static\soul_v3\ER000_005450_mGPT.gif">
+            <img src="webVis\static\soul_v3\ER000_017070_mGPT.gif">
+            <img src="webVis\static\soul_v3\ER000_060170_mGPT.gif">
+            <img src="webVis\static\soul_v3\ER000_080500_mGPT.gif">
+            <img src="webVis\static\soul_v3\ER000_080600_mGPT.gif">
+            <img src="webVis\static\soul_v3\ER000_080700_mGPT.gif">
+            <img src="webVis\static\soul_v3\ER000_080800_mGPT.gif">
+            <img src="webVis\static\soul_v3\SKR071_402000_mGPT.gif">
+            <img src="webVis\static\soul_v3\SKR073_400010_mGPT.gif">
+            <img src="webVis\static\soul_v3\SKR102_316210_mGPT.gif">
+            <img src="webVis\static\soul_v3\SKR103_316000_mGPT.gif">
+            <img src="webVis\static\soul_v3\SKR106_316110_mGPT.gif">
+
+
+        </div>
+
+        <!-- HSmerge -->
+        <div class="column">
+            <h2>HSmerge</h2>
+            <img src="webVis\static\HSmerge\BB000_003102_mGPT.gif">
+            <img src="webVis\static\HSmerge\BB000_004000_mGPT.gif">
+            <img src="webVis\static\HSmerge\BB000_006100_mGPT.gif">
+            <img src="webVis\static\HSmerge\BB000_007150_mGPT.gif">
+            <img src="webVis\static\HSmerge\BB000_007400_mGPT.gif">
+            <img src="webVis\static\HSmerge\BB000_007402_mGPT.gif">
+            <img src="webVis\static\HSmerge\BB000_020200_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3020_030010_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3020_030020_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3026_030320_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3026_030321_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3027_032060_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3028_036410_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3028_036420_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3029_030500_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3029_036240_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3030_030600_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3032_034000_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3038_034320_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3042_030321_mGPT.gif">
+            <img src="webVis\static\HSmerge\DS3051_036400_mGPT.gif">
+            <img src="webVis\static\HSmerge\ER000_005450_mGPT.gif">
+            <img src="webVis\static\HSmerge\ER000_017070_mGPT.gif">
+            <img src="webVis\static\HSmerge\ER000_060170_mGPT.gif">
+            <img src="webVis\static\HSmerge\ER000_080500_mGPT.gif">
+            <img src="webVis\static\HSmerge\ER000_080600_mGPT.gif">
+            <img src="webVis\static\HSmerge\ER000_080700_mGPT.gif">
+            <img src="webVis\static\HSmerge\ER000_080800_mGPT.gif">
+            <img src="webVis\static\HSmerge\SKR071_402000_mGPT.gif">
+            <img src="webVis\static\HSmerge\SKR073_400010_mGPT.gif">
+            <img src="webVis\static\HSmerge\SKR102_316210_mGPT.gif">
+            <img src="webVis\static\HSmerge\SKR103_316000_mGPT.gif">
+            <img src="webVis\static\HSmerge\SKR106_316110_mGPT.gif">
+
+        </div>
+
+        <!-- Finetune-H+S3 -->
+        <div class="column">
+            <h2>Finetune-H+S3</h2>
+            <img src="webVis\static\Finetune_H+S3\BB000_003102_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\BB000_004000_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\BB000_006100_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\BB000_007150_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\BB000_007400_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\BB000_007402_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\BB000_020200_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3020_030010_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3020_030020_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3026_030320_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3026_030321_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3027_032060_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3028_036410_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3028_036420_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3029_030500_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3029_036240_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3030_030600_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3032_034000_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3038_034320_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3042_030321_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\DS3051_036400_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\ER000_005450_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\ER000_017070_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\ER000_060170_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\ER000_080500_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\ER000_080600_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\ER000_080700_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\ER000_080800_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\SKR071_402000_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\SKR073_400010_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\SKR102_316210_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\SKR103_316000_mGPT.gif">
+            <img src="webVis\static\Finetune_H+S3\SKR106_316110_mGPT.gif">
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
