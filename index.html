@@ -38,17 +38,27 @@
         }
 
         .descriptions {
-            max-width: 20%;
-            /* 设置描述列的最大宽度 */
-            max-height: 100%;
+            flex: 1;
+            /* flex属性让每个子元素占据相同的空间 */
+            padding: 0 10px;
+            /* 左右内边距 */
+            display: flex;
+            /* 使用flex布局 */
+            flex-direction: column;
+            /* 设置子元素垂直排列 */
+            align-items: center;
+            /* 在垂直方向上居中对齐子元素 */
+
             background-color: white;
+
         }
 
         .descriptions p {
-            margin-top: 75px;
-            margin-bottom: 75px;
+            margin-top: 45px;
+            margin-bottom: 45px;
             /* 每个描述段落下方的外边距 */
         }
+
 
         .column img {
             max-width: 100%;
@@ -144,111 +154,131 @@
         <!-- prompts -->
         <div class="descriptions">
             <h2>text</h2>
-            <p>角色双手自然下垂于身体两侧，身体重心稍微下压，向左缓慢移动。</p>
-            <p>The character's hands hang naturally at the sides of their body, their body's center of gravity slightly
+            <p>角色双手自然下垂于身体两侧，身体重心稍微下压，向左缓慢移动。<br><br>
+                The character's hands hang naturally at the sides of their body, their body's center of gravity slightly
                 lowered, and they move slowly to the left.</p>
-            <p>角色轻盈地向前跑动。</p>
-            <p>The character runs forward lightly.</p>
-            <p>角色轻盈地向后转身。</p>
-            <p>The character turns around lightly.</p>
-            <p>角色轻盈地向前方滑步，过程中隐身，动作迅捷干净利落，流畅连贯，感觉轻飘飘的。</p>
-            <p>The character swiftly and lightly slides forward, becoming invisible during the process, with agile and
+            <p>角色轻盈地向前跑动。<br><br>The character runs forward lightly.</p>
+            <p>角色轻盈地向后转身。<br><br>The character turns around lightly.</p>
+            <p>角色轻盈地向前方滑步，过程中隐身，动作迅捷干净利落，流畅连贯，感觉轻飘飘的。<br><br>The character swiftly and lightly slides forward, becoming
+                invisible during the process, with agile and
                 clean movements, smoothly and fluently, feeling light and airy.</p>
-            <p>角色轻盈地向前方翻滚，快速地起身。</p>
-            <p>The character rolls forward lightly and quickly gets up.</p>
-            <p>角色轻盈地向左边翻滚，快速地起身。</p>
-            <p>The character rolls to the left side lightly and quickly gets up.</p>
-            <p>角色受击，身体大硬直，均速起身，惊慌失措地身体失衡向后退，右手挥舞在空中。</p>
-            <p>The character is hit, their body goes into large stagger, and they get up at a moderate speed. They
+            <p>角色轻盈地向前方翻滚，快速地起身。<br><br>The character rolls forward lightly and quickly gets up.</p>
+            <p>角色轻盈地向左边翻滚，快速地起身。<br><br>The character rolls to the left side lightly and quickly gets up.</p>
+            <p>角色受击，身体大硬直，均速起身，惊慌失措地身体失衡向后退，右手挥舞在空中。<br><br>The character is hit, their body goes into large stagger,
+                and they
+                get up at a moderate speed. They
                 stagger in panic, leaning backward, while swinging their right arm in the air.</p>
-            <p>角色用轻盈的姿势，右手单持短剑或匕首进行快速挥击，从身前的左侧向右侧猛攻。</p>
-            <p>The character wields a short sword or dagger in their right hand with light and agile movements,
+            <p>角色用轻盈的姿势，右手单持短剑或匕首进行快速挥击，从身前的左侧向右侧猛攻。<br><br>The character wields a short sword or dagger in their right
+                hand
+                with light and agile movements,
                 delivering a quick strike from the left side to the right side.</p>
-            <p>角色以轻盈利落的动作，右手单持短剑或匕首快速挥击，从身前的右侧向左侧攻击。</p>
-            <p>The character swiftly swings a short sword or dagger in their right hand with agile and precise
+            <p>角色以轻盈利落的动作，右手单持短剑或匕首快速挥击，从身前的右侧向左侧攻击。<br><br>The character swiftly swings a short sword or dagger in
+                their right
+                hand with agile and precise
                 movements, launching an attack from the right side to the left side.</p>
-            <p>角色右手持大剑或特大剑，蓄力重击。角色双腿半蹲，上半身微微向右侧侧身，紧接着向前劈砍。最后回到原始站立姿势。</p>
-            <p>The character holds a greatsword or ultra greatsword in their right hand and performs a charged heavy
+            <p>角色右手持大剑或特大剑，蓄力重击。<br><br>角色双腿半蹲，上半身微微向右侧侧身，紧接着向前劈砍。<br><br>最后回到原始站立姿势。<br><br>The character holds a
+                greatsword or ultra
+                greatsword in their right hand and performs a charged heavy
                 attack. They squat halfway, lean slightly to the right side with their upper body, and then swing the
                 sword forward. Finally, they return to the original standing posture.</p>
-            <p>角色右手持大剑或特大剑，未蓄力重击。角色从右侧身向前挥砍。最后回到原始站立姿势。</p>
-            <p>The character holds a greatsword or ultra greatsword in their right hand and performs a non-charged heavy
+            <p>角色右手持大剑或特大剑，未蓄力重击。<br><br>角色从右侧身向前挥砍。<br><br>最后回到原始站立姿势。<br><br>The character holds a greatsword or ultra
+                greatsword in their
+                right hand and performs a non-charged heavy
                 attack. They swing the sword forward from the right side. Finally, they return to the original standing
                 posture.</p>
-            <p>角色左手持刺剑进行轻击，轻盈地右手挽一个刀花后向前刺击，同时向前碎步，随后恢复站姿。</p>
-            <p>The character performs a light attack with a thrusting sword held in the left hand. They elegantly
+            <p>角色左手持刺剑进行轻击，轻盈地右手挽一个刀花后向前刺击，同时向前碎步，随后恢复站姿。<br><br>The character performs a light attack with a thrusting
+                sword
+                held in the left hand. They elegantly
                 perform a flourish with their right hand before thrusting it forward, taking light steps forward. Then,
                 they return to their stance.</p>
-            <p>角色双手各持曲剑和大曲剑，在回旋挥刀后恢复站姿。</p>
-            <p>The character wields a curved sword and a large curved sword in each hand, and swings the swords in
+            <p>角色双手各持曲剑和大曲剑，在回旋挥刀后恢复站姿。<br><br>The character wields a curved sword and a large curved sword in each
+                hand, and
+                swings the swords in
                 rotation before returning to a standing posture.</p>
-            <p>角色双手各持曲剑和大曲剑，在回旋挥刀后恢复站姿。</p>
-            <p>The character wields a curved sword and a large curved sword in each hand, and swings the swords in
+            <p>角色双手各持曲剑和大曲剑，在回旋挥刀后恢复站姿。<br><br>The character wields a curved sword and a large curved sword in each
+                hand, and
+                swings the swords in
                 rotation before returning to a standing posture.</p>
-            <p>角色右手持太刀，快速奔跑并蓄力，然后使用直截了当的力量感向前刺击，最后恢复站姿。</p>
-            <p>The character holds a katana in their right hand, runs quickly and charges, then uses a direct and
+            <p>角色右手持太刀，快速奔跑并蓄力，然后使用直截了当的力量感向前刺击，最后恢复站姿。<br><br>The character holds a katana in their right hand, runs
+                quickly
+                and charges, then uses a direct and
                 powerful attack to thrust forward, and finally returns to a standing posture.</p>
-            <p>角色用双持太刀进行战技弹反，沉重地向左侧身蓄力并下蹲，然后右脚前跨同时右手上刺，最后恢复站姿。</p>
-            <p>The character uses dual-wielding katanas to perform a technique that deflects attacks. They heavily lean
+            <p>角色用双持太刀进行战技弹反，沉重地向左侧身蓄力并下蹲，然后右脚前跨同时右手上刺，最后恢复站姿。<br><br>The character uses dual-wielding katanas to
+                perform a
+                technique that deflects attacks. They heavily lean
                 to the left side, crouch down, and gather strength. Then, they lunge forward with their right foot and
                 stab with their right hand, before returning to their original stance.</p>
-            <p>角色右手持斧，以跳跃的方式进行攻击。角色跃起，同时落地时右手向前劈砍，然后起身恢复站姿。</p>
-            <p>The character wields an axe in their right hand and performs a jumping attack. They jump up, and as they
+            <p>角色右手持斧，以跳跃的方式进行攻击。<br><br>角色跃起，同时落地时右手向前劈砍，然后起身恢复站姿。<br><br>The character wields an axe in their right
+                hand and performs
+                a jumping attack. They jump up, and as they
                 land, they swing the axe forward with their right hand before returning to a standing position.</p>
-            <p>角色双持斧头进行轻击，以较迅捷的速度扭腰向右，右腿向前迈步，双手斜向下挥砍。</p>
-            <p>The character dual wields axes and performs a quick strike, swiftly twisting their waist to the right,
+            <p>角色双持斧头进行轻击，以较迅捷的速度扭腰向右，右腿向前迈步，双手斜向下挥砍。<br><br>The character dual wields axes and performs a quick strike,
+                swiftly
+                twisting their waist to the right,
                 stepping forward with their right leg, and slashing downward diagonally with both hands.</p>
-            <p>角色双持戟进行蓄力重击，扎实地侧身扭腰向左，右腿向前迈步，双手共握武器，从左后蓄力，然后向前连续挥两圈。</p>
-            <p>The character dual wields halberds and charges a powerful strike. They firmly twist their waist to the
+            <p>角色双持戟进行蓄力重击，扎实地侧身扭腰向左，右腿向前迈步，双手共握武器，从左后蓄力，然后向前连续挥两圈。<br><br>The character dual wields halberds and
+                charges a
+                powerful strike. They firmly twist their waist to the
                 side, step forward with their right leg, hold the weapons with both hands, gather strength from the left
                 rear, and then swing in two consecutive circles.</p>
-            <p>角色右手持拳套，扎实地直接向前挥击，动作迅捷干净利落。</p>
-            <p>The character holds a pair of boxing gloves in their right hand and swings directly forward with a firm
+            <p>角色右手持拳套，扎实地直接向前挥击，动作迅捷干净利落。<br><br>The character holds a pair of boxing gloves in their right hand and
+                swings
+                directly forward with a firm
                 and clean movement.</p>
-            <p>角色使用曲剑和大曲剑进行战技，扎实的将武器扛在肩膀上，人物向左转身，逆时针旋转一周半，武器顺势挥砍。</p>
-            <p>The character utilizes a technique with curved swords and great curved swords, firmly carries the weapons
-                on their shoulder, rotates to the left, counterclockwise almost one and a half circles, and swings the
+            <p>角色使用曲剑和大曲剑进行战技，扎实的将武器扛在肩膀上，人物向左转身，逆时针旋转一周半，武器顺势挥砍。<br><br> on their shoulder, rotates to the left,
+                counterclockwise almost one and a half circles, and swings the
                 weapons.</p>
-            <p>角色全身向后被击飞，后仰在地，并缓慢地起身直立。</p>
-            <p>The character is knocked backward, falling on their back, then slowly gets up and stands upright.</p>
-            <p>角色被挑飞到空中，重重摔在地上后趴倒。</p>
-            <p>he character is picked up and thrown into the air, crashes heavily onto the ground, falls face down</p>
-            <p>角色用具有力量感的、沉重、积蓄力量的双手向前用力缓缓推开障碍物。</p>
-            <p>The character uses their powerful and heavy hands to push the obstacle forward slowly and with force.</p>
-            <p>角色右手握拳，右臂向上挥动两次，左臂向上挥动，右臂向上挥动，右拳举至高处。动作干净利落，较迅捷，带有欢快的氛围。</p>
-            <p>The character clenches their right fist, swings their right arm upward twice, swings their left arm
+            <p>角色全身向后被击飞，后仰在地，并缓慢地起身直立。<br><br>>The character is knocked backward, falling on their back, then slowly
+                gets up
+                and stands upright.</p>
+            <p>角色被挑飞到空中，重重摔在地上后趴倒。<br><br>he character is picked up and thrown into the air, crashes heavily onto the
+                ground,
+                falls face down</p>
+            <p>角色用具有力量感的、沉重、积蓄力量的双手向前用力缓缓推开障碍物。<br><br>The character uses their powerful and heavy hands to push the
+                obstacle
+                forward slowly and with force.</p>
+            <p>角色右手握拳，右臂向上挥动两次，左臂向上挥动，右臂向上挥动，右拳举至高处。<br><br>动作干净利落，较迅捷，带有欢快的氛围。<br><br>The character clenches their
+                right fist, swings
+                their right arm upward twice, swings their left arm
                 upward, swings their right arm upward again, and raises their right fist high. The action is clean,
                 quick, and joyful.</p>
-            <p>角色右脚稍向后，双臂在腹部前方拍手数次，动作轻盈、干净利落且较迅捷，欢快流畅连贯。</p>
-            <p>The character slightly moves their right foot backward and claps their hands multiple times in front of
+            <p>角色右脚稍向后，双臂在腹部前方拍手数次，动作轻盈、干净利落且较迅捷，欢快流畅连贯。<br><br>The character slightly moves their right foot backward
+                and claps
+                their hands multiple times in front of
                 their abdomen, with light, clean, and quick movements, expressing joy and fluidity.</p>
-            <p>角色高兴地跳起来，然后右拳向前挥出，动作具有力量感、干净利落且较迅捷，带有不羁、发癫、空翻、杂耍、舞动和欢快的特点。</p>
-            <p>The character jumps up happily, then swings their right fist forward, with powerful, clean, and quick
+            <p>角色高兴地跳起来，然后右拳向前挥出，动作具有力量感、干净利落且较迅捷，带有不羁、发癫、空翻、杂耍、舞动和欢快的特点。<br><br>The character jumps up happily, then
+                swings
+                their right fist forward, with powerful, clean, and quick
                 movements, showcasing a sense of wildness, excitement, acrobatics, juggling, dancing, and cheerfulness.
             </p>
-            <p>角色沮丧地双腿张开跪在地上，低头弯腰，动作轻盈而迅捷，但带有一丝沮丧。</p>
-            <p>The character kneels on the ground with their legs spread apart, bows their head and bends over in
+            <p>角色沮丧地双腿张开跪在地上，低头弯腰，动作轻盈而迅捷，但带有一丝沮丧。<br><br>The character kneels on the ground with their legs spread
+                apart, bows
+                their head and bends over in
                 sadness, with light and swift movements, but with a touch of despair.</p>
-            <p>角色身体压低，右腿弓步，左腿向前伸直。左手举起身体朝向右侧，挥动到胸前，整体逆时针旋转。旋转180度至面朝左方，左手向后打开，呈马步蹲姿势。然后恢复到蹲下的姿势。</p>
-            <p>The character lowers their body, bends their right leg, and extends their left leg forward. They raise
+            <p>角色身体压低，右腿弓步，左腿向前伸直。<br><br>左手举起身体朝向右侧，挥动到胸前，整体逆时针旋转。<br><br>旋转180度至面朝左方，左手向后打开，呈马步蹲姿势。<br><br>然后恢复到蹲下的姿势。<br><br>The
+                character lowers
+                their body, bends their right leg, and extends their left leg forward. They raise
                 their left hand and turn their body clockwise. They rotate 180 degrees to face left, opening their left
                 hand backward in a horse-riding squat pose. Then, they return to a squatting posture.</p>
-            <p>角色使用机关斧，在左手进行蓄力重击。具有力量感的左脚向后撤步，左手向后蓄力。身体转向前方并前倾，左手自左向右挥出，身体随之转动360度后右脚踮脚左脚抬起，高举左手劈下，并朝向右侧的马步落地。恢复站立姿势。
-            </p>
-            <p>The character uses a mechanical axe to charge up a heavy attack with their left hand. They step back with
+            <p>角色使用机关斧，在左手进行蓄力重击。<br><br>具有力量感的左脚向后撤步，左手向后蓄力。<br><br>身体转向前方并前倾，左手自左向右挥出，身体随之转动360度后右脚踮脚左脚抬起，高举左手劈下，并朝向右侧的马步落地。<br><br>恢复站立姿势。<br><br>
+                The character uses a mechanical axe to charge up a heavy attack with their left hand. They step back
+                with
                 their left foot, pulling their left hand back for power. Then, they turn their body forward and lean,
                 swinging their left hand from left to right as their body rotates 360 degrees. Finally, they raise their
                 left hand high, bring down the axe while lifting their right foot, and land in a horse stance facing the
                 right. They then return to a standing position.</p>
-            <p>角色双手握着楔丸，高举在头顶，右腿在前左腿在后扎马步，然后向下挥砍。</p>
-            <p>The character holds a wedge-shaped weapon with both hands, raising it high above their head. They then
+            <p>角色双手握着楔丸，高举在头顶，右腿在前左腿在后扎马步，然后向下挥砍。<br><br>The character holds a wedge-shaped weapon with both hands,
+                raising it
+                high above their head. They then
                 take a lunge position with their right leg forward and left leg behind, and swing the weapon downwards.
             </p>
-            <p>角色向右转身，扎马步，右手将楔丸插入左手刀鞘中蓄力，然后顺时针转身向前挥。</p>
-            <p>The character turns to the right, lunges forward, inserts the wedge-shaped weapon into the scabbard on
+            <p>角色向右转身，扎马步，右手将楔丸插入左手刀鞘中蓄力，然后顺时针转身向前挥。<br><br>The character turns to the right, lunges forward, inserts
+                the
+                wedge-shaped weapon into the scabbard on
                 their left hand, gathers strength, then turns clockwise and swings the weapon forward.</p>
-            <p>角色使用不死斩进行双手并用的攻击。扎实地双手持剑从后向前挥，然后将剑插入背后的剑鞘。</p>
-            <p>The character uses Undead Slasher to perform a two-handed attack. They firmly swing the sword from behind
+            <p>角色使用不死斩进行双手并用的攻击。<br><br>扎实地双手持剑从后向前挥，然后将剑插入背后的剑鞘。<br><br>The character uses Undead Slasher to perform a
+                two-handed
+                attack. They firmly swing the sword from behind
                 to the front, and then insert the sword into the scabbard on their back.</p>
         </div>
 
