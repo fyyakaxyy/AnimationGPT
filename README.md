@@ -21,17 +21,7 @@ Character animation generation based on text-to-motion and large models
 
 
 
-## Experiment and Animation
-
-当前页面只展示最新结果，其它结果：[animation.md](./animation/animation.md)
-
-### Finetune-H+S3
-
-| ![DS3028_030320_mGPT](README.assets/DS3028_030320_mGPT.gif) | ![DS3042_030500_mGPT](README.assets/DS3042_030500_mGPT.gif) | ![DS3038_030340_mGPT](README.assets/DS3038_030340_mGPT.gif) |
-| :---------------------------------------------------------: | :---------------------------------------------------------: | ----------------------------------------------------------- |
-
-- 相较于单独训练和混合训练，微调的效果最差，语义理解错误，动作扭曲。
-- 但是微调模型生成的动作序列时间更长。
+## Experiment
 
 **evaluation on mGPT**
 
