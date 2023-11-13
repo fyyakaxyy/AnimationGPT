@@ -119,3 +119,22 @@
 - “一个人蓄力重击挥出大剑。”
 - “一个人扎马步，左脚为轴，右脚发力向前，双臂随着腰向前蓄力挥动大剑。”
 
+
+
+
+
+
+
+## Motion-X
+
+| 压缩文件                     | 解压             | 说明 | size                        |
+| ---------------------------- | ---------------- | ---- | --------------------------- |
+| motionx_face_motion_data.zip | face_motion_data |      | 28,837 个文件，389 个文件夹 |
+| motionx_seq_face_text.zip    | face_texts       |      | 81,314 个文件，684 个文件夹 |
+| motionx_seq_text.zip         | semantic_labels  |      | 52,477 个文件，296 个文件夹 |
+| motionx_smplx.zip            | motion_data      |      | 52,477 个文件，297 个文件夹 |
+
+- `animation.py`无法渲染
+
+- HumanML3D是处理AMASS的SMPL-H数据；
+- Motion-X提供的数据是SMPL-X格式的。
