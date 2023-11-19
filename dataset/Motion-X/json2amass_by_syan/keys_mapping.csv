@@ -1,0 +1,25 @@
+order,smpl_name,fbx_name
+0,pelvis,m_avg_Pelvis
+1,left leg root,m_avg_L_Hip
+2,right leg root,m_avg_R_Hip
+3,lowerback,m_avg_Spine1
+4,left knee,m_avg_L_Knee
+5,right knee,m_avg_R_Knee
+6,upperback,m_avg_Spine2
+7,left ankle,m_avg_L_Ankle
+8,right ankle,m_avg_R_Ankle
+9,thorax,m_avg_Spine3
+10,left toes,m_avg_L_Foot
+11,right toes,m_avg_R_Foot
+12,lowerneck,m_avg_Neck
+13,left clavicle,m_avg_L_Collar
+14,right clavicle,m_avg_R_Collar
+15,upperneck,m_avg_Head
+16,left armroot,m_avg_L_Shoulder
+17,right armroot,m_avg_R_Shoulder
+18,left elbow,m_avg_L_Elbow
+19,right elbow,m_avg_R_Elbow
+20,left wrist,m_avg_L_Wrist
+21,right wrist,m_avg_R_Wrist
+22,left hand,m_avg_L_Hand
+23,right hand,m_avg_R_Hand
