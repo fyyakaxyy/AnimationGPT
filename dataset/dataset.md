@@ -134,7 +134,19 @@
 | motionx_seq_text.zip         | semantic_labels  |      | 52,477 个文件，296 个文件夹 |
 | motionx_smplx.zip            | motion_data      |      | 52,477 个文件，297 个文件夹 |
 
-- `animation.py`无法渲染
-
-- HumanML3D是处理AMASS的SMPL-H数据；
 - Motion-X提供的数据是SMPL-X格式的。
+
+Pipline：Motion-X（npy） —— AMASS（npz）—— HumanML3D（npy）
+
+动画如下：
+
+| ![2_Heel_Lifts_1_Jump_Up](dataset.assets/2_Heel_Lifts_1_Jump_Up.gif) | ![1809_Jump_To_Kick_clip_7](dataset.assets/1809_Jump_To_Kick_clip_7.gif) | ![Spread_Your_Hands_During_Walking](dataset.assets/Spread_Your_Hands_During_Walking.gif) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![Sprint_Start_clip_15](dataset.assets/Sprint_Start_clip_15.gif) | ![Squat_To_Knee_Tuck_Arm_Opener](dataset.assets/Squat_To_Knee_Tuck_Arm_Opener.gif) | ![Zhan_Zhuang_Gong_While_Walking_clip_1](dataset.assets/Zhan_Zhuang_Gong_While_Walking_clip_1.gif) |
+
+可能是坐标系错误
+
+
+
+
+
