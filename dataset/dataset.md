@@ -144,9 +144,16 @@ Pipline：Motion-X（npy） —— AMASS（npz）—— HumanML3D（npy）
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![Sprint_Start_clip_15](dataset.assets/Sprint_Start_clip_15.gif) | ![Squat_To_Knee_Tuck_Arm_Opener](dataset.assets/Squat_To_Knee_Tuck_Arm_Opener.gif) | ![Zhan_Zhuang_Gong_While_Walking_clip_1](dataset.assets/Zhan_Zhuang_Gong_While_Walking_clip_1.gif) |
 
-可能是坐标系错误
+**错误原因：转移矩阵不正确，原HumanML3D的转移矩阵不适用**
 
-
+```py
+# trans_matrix = np.array([[1.0, 0.0, 0.0],
+#                             [0.0, 0.0, 1.0],
+#                             [0.0, 1.0, 0.0]])
+trans_matrix = np.array([[1.0, 0.0, 0.0],
+                            [0.0, 1.0, 0.0],
+                            [0.0, 0.0, 1.0]])
+```
 
 
 
