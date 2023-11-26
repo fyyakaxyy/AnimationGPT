@@ -1,5 +1,5 @@
 '''
-python your_script.py input_folder output_folder --scale 0.8
+python vid2gif.py input_folder output_folder --scale 0.8
 '''
 
 import argparse

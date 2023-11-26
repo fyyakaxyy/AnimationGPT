@@ -127,6 +127,8 @@
 
 ## Motion-X
 
+从文本标注的内容来看，Motion-X和HumanAct12更接近。
+
 | 压缩文件                     | 解压             | 说明 | size                        |
 | ---------------------------- | ---------------- | ---- | --------------------------- |
 | motionx_face_motion_data.zip | face_motion_data |      | 28,837 个文件，389 个文件夹 |
@@ -140,6 +142,8 @@ Pipline：Motion-X（npy） —— AMASS（npz）—— HumanML3D（npy）
 
 动画如下：
 
+### v1
+
 | ![2_Heel_Lifts_1_Jump_Up](dataset.assets/2_Heel_Lifts_1_Jump_Up.gif) | ![1809_Jump_To_Kick_clip_7](dataset.assets/1809_Jump_To_Kick_clip_7.gif) | ![Spread_Your_Hands_During_Walking](dataset.assets/Spread_Your_Hands_During_Walking.gif) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![Sprint_Start_clip_15](dataset.assets/Sprint_Start_clip_15.gif) | ![Squat_To_Knee_Tuck_Arm_Opener](dataset.assets/Squat_To_Knee_Tuck_Arm_Opener.gif) | ![Zhan_Zhuang_Gong_While_Walking_clip_1](dataset.assets/Zhan_Zhuang_Gong_While_Walking_clip_1.gif) |
@@ -148,12 +152,30 @@ Pipline：Motion-X（npy） —— AMASS（npz）—— HumanML3D（npy）
 
 ```py
 # trans_matrix = np.array([[1.0, 0.0, 0.0],
-#                             [0.0, 0.0, 1.0],
-#                             [0.0, 1.0, 0.0]])
+#                 [0.0, 0.0, 1.0],
+#                 [0.0, 1.0, 0.0]])
 trans_matrix = np.array([[1.0, 0.0, 0.0],
-                            [0.0, 1.0, 0.0],
-                            [0.0, 0.0, 1.0]])
+                 [0.0, 1.0, 0.0],
+                 [0.0, 0.0, 1.0]])
 ```
 
+### v2
 
+| ![4_High_Knees_To_4ow_Pfnduumg_clip_19](dataset.assets/4_High_Knees_To_4ow_Pfnduumg_clip_19.gif) | ![Alt_clip_7](dataset.assets/Alt_clip_7.gif) | ![Apply_Cream_On_The_Face_While_Sitting](dataset.assets/Apply_Cream_On_The_Face_While_Sitting.gif) |
+| ------------------------------------------------------------ | -------------------------------------------- | ------------------------------------------------------------ |
+| ![Arm_Circle_To_Butt_Kick_clip_43](dataset.assets/Arm_Circle_To_Butt_Kick_clip_43.gif) | ![Arnold_Put](dataset.assets/Arnold_Put.gif) | ![Taichi_Fan](dataset.assets/Taichi_Fan.gif)                 |
+
+感觉还是某个轴出了问题，再换转移矩阵测试。
+
+```py
+# trans_matrix = np.array([[1.0, 0.0, 0.0],
+#                 [0.0, 0.0, 1.0],
+#                 [0.0, 1.0, 0.0]])
+#trans_matrix = np.array([[1.0, 0.0, 0.0],
+#                 [0.0, 1.0, 0.0],
+#                 [0.0, 0.0, 1.0]])
+trans_matrix = np.array([[0.0, 1.0, 0.0],
+                 [1.0, 0.0, 0.0],
+                 [0.0, 0.0, 1.0]])
+```
 
