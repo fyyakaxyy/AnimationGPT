@@ -127,7 +127,8 @@
 
 ## Motion-X
 
-从文本标注的内容来看，Motion-X和HumanAct12更接近。
+- 从文本标注的内容来看，Motion-X和HumanAct12更接近；
+- Motion-X提供的数据是SMPL-X格式的。
 
 | 压缩文件                     | 解压             | 说明 | size                        |
 | ---------------------------- | ---------------- | ---- | --------------------------- |
@@ -136,46 +137,41 @@
 | motionx_seq_text.zip         | semantic_labels  |      | 52,477 个文件，296 个文件夹 |
 | motionx_smplx.zip            | motion_data      |      | 52,477 个文件，297 个文件夹 |
 
-- Motion-X提供的数据是SMPL-X格式的。
+
 
 Pipline：Motion-X（npy） —— AMASS（npz）—— HumanML3D（npy）
 
-动画如下：
-
-### v1
-
-| ![2_Heel_Lifts_1_Jump_Up](dataset.assets/2_Heel_Lifts_1_Jump_Up.gif) | ![1809_Jump_To_Kick_clip_7](dataset.assets/1809_Jump_To_Kick_clip_7.gif) | ![Spread_Your_Hands_During_Walking](dataset.assets/Spread_Your_Hands_During_Walking.gif) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![Sprint_Start_clip_15](dataset.assets/Sprint_Start_clip_15.gif) | ![Squat_To_Knee_Tuck_Arm_Opener](dataset.assets/Squat_To_Knee_Tuck_Arm_Opener.gif) | ![Zhan_Zhuang_Gong_While_Walking_clip_1](dataset.assets/Zhan_Zhuang_Gong_While_Walking_clip_1.gif) |
-
-**错误原因：转移矩阵不正确，原HumanML3D的转移矩阵不适用**
+**转移矩阵测试**
 
 ```py
-# trans_matrix = np.array([[1.0, 0.0, 0.0],
-#                 [0.0, 0.0, 1.0],
-#                 [0.0, 1.0, 0.0]])
 trans_matrix = np.array([[1.0, 0.0, 0.0],
-                 [0.0, 1.0, 0.0],
-                 [0.0, 0.0, 1.0]])
+                 [0.0, 0.0, 1.0],
+                 [0.0, 1.0, 0.0]])
 ```
 
-### v2
 
-| ![4_High_Knees_To_4ow_Pfnduumg_clip_19](dataset.assets/4_High_Knees_To_4ow_Pfnduumg_clip_19.gif) | ![Alt_clip_7](dataset.assets/Alt_clip_7.gif) | ![Apply_Cream_On_The_Face_While_Sitting](dataset.assets/Apply_Cream_On_The_Face_While_Sitting.gif) |
-| ------------------------------------------------------------ | -------------------------------------------- | ------------------------------------------------------------ |
-| ![Arm_Circle_To_Butt_Kick_clip_43](dataset.assets/Arm_Circle_To_Butt_Kick_clip_43.gif) | ![Arnold_Put](dataset.assets/Arnold_Put.gif) | ![Taichi_Fan](dataset.assets/Taichi_Fan.gif)                 |
 
-感觉还是某个轴出了问题，再换转移矩阵测试。
+![image-20231127192933312](dataset.assets/image-20231127192933312.png)
 
-```py
-# trans_matrix = np.array([[1.0, 0.0, 0.0],
-#                 [0.0, 0.0, 1.0],
-#                 [0.0, 1.0, 0.0]])
-#trans_matrix = np.array([[1.0, 0.0, 0.0],
-#                 [0.0, 1.0, 0.0],
-#                 [0.0, 0.0, 1.0]])
-trans_matrix = np.array([[0.0, 1.0, 0.0],
-                 [1.0, 0.0, 0.0],
-                 [0.0, 0.0, 1.0]])
-```
+|              | 转移矩阵                                                     | ![Ways_To_Catch_360](dataset.assets/Ways_To_Catch_360-17010707575392.gif) | ![Ways_To_Catch_A_Fly](dataset.assets/Ways_To_Catch_A_Fly.gif) | ![Ways_To_Catch_Save_A_Life](dataset.assets/Ways_To_Catch_Save_A_Life.gif) |
+| :----------: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+|  HumanML3D   | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & 1.0 \\   0.0 & 1.0 & 0.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](dataset.assets/Ways_To_Catch_360.gif)   | ![Ways_To_Catch_A_Fly](dataset.assets/Ways_To_Catch_A_Fly-17010708199956.gif) | ![Ways_To_Catch_Save_A_Life](dataset.assets/Ways_To_Catch_Save_A_Life-17010708605438.gif) |
+|   标准姿态   | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 1.0 & 0.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](dataset.assets/Ways_To_Catch_360-170107087767710.gif) | ![Ways_To_Catch_A_Fly](dataset.assets/Ways_To_Catch_A_Fly-170107088180712.gif) | ![Ways_To_Catch_Save_A_Life](dataset.assets/Ways_To_Catch_Save_A_Life-170107090144014.gif) |
+| 绕x轴旋转90° | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & -1.0 \\   0.0 & 1.0 & 0.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](dataset.assets/Ways_To_Catch_360-170108484829633.gif) | ![Ways_To_Catch_A_Fly](dataset.assets/Ways_To_Catch_A_Fly-170108485228635.gif) | ![Ways_To_Catch_Save_A_Life](dataset.assets/Ways_To_Catch_Save_A_Life-170108485926937.gif) |
+| 绕z轴旋转90° | $$\left[ \begin{matrix}   0.0 & -1.0 & 0.0 \\   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](dataset.assets/Ways_To_Catch_360-170108529100139.gif) | ![Ways_To_Catch_A_Fly](dataset.assets/Ways_To_Catch_A_Fly-170108529447941.gif) | ![Ways_To_Catch_Save_A_Life](dataset.assets/Ways_To_Catch_Save_A_Life-170108529801843.gif) |
+|     偏转     | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 1.0 & 1.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](dataset.assets/Ways_To_Catch_360-170107094741221.gif) | ![Ways_To_Catch_A_Fly](dataset.assets/Ways_To_Catch_A_Fly-170107611374831.gif) | ![Ways_To_Catch_Save_A_Life](dataset.assets/Ways_To_Catch_Save_A_Life-170107096431925.gif) |
+
+从以上结果来看，转移矩阵只是用于调整全身姿态的，现在的问题是部分动作特征缺失。比如第一列的“Ways_To_Catch_360”，骨骼人体缺少了旋转的动作，错误可能出在MotionX2AMASS这一步，缺失了一些参数。
+
+
+
+
+
+
+
+
+
+
+
+
 
