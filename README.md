@@ -17,7 +17,7 @@ Character animation generation based on text-to-motion and large models
 | soul_v1(old) | 30368(with mirror)<br />15473 | 1. 删除了镜像npy（mirror）后文件数是15473；<br />2. 注意：Mean.npy和Std.npy的计算不包括镜像文件。 |
 | soul_v2      | 14993                         | 1. shinnobi和grappling缺失词性标注导致模型训练崩溃。         |
 | soul_v3      | 11662                         | 1. 部分标注异常，例如“The character performs the '忍义手' pose ”；<br />2. 多个标注内容重复（GPT标注问题）：<br />其中5个重复（12）、4个重复（19）、3个重复（153）、2个重复（863）。 |
-| soul_v4      | 8725                          | 1. 2版标注（一简、二简；对应的soul_v3是详细版表述）；<br />2. 侧重对root motion的方位词描述。 |
+| soul_v4      | 8725                          | 1. 两版标注（一简、二简；对应的soul_v3是详细版表述）；<br />2. 侧重对root motion的方位词描述；<br />3. 增加了帧数的描述。 |
 
 
 
@@ -41,3 +41,17 @@ Character animation generation based on text-to-motion and large models
 | MultiModality ↑                          | 3.6207±0.0872     | **5.8888±0.1620** | 2.9249±0.0914 |
 
 **从评估指标来看，混合训练在数据量上占优势，因此刷点效果不错，视觉效果待评价。微调的效果最差，从网页展示的对比效果来看，数据分布被严重影响。**
+
+
+
+
+
+## Acknowledgments
+
+- Dataset: Thanks to [HumanML3D](https://github.com/EricGuo5513/HumanML3D) and [Motion-X](https://github.com/IDEA-Research/Motion-X).
+
+- algorithm: Thanks to [MLD](https://github.com/ChenFengYe/motion-latent-diffusion), [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) and [MDM](https://github.com/GuyTevet/motion-diffusion-model).
+
+Our code is partially borrowing from them.
+
+![感谢大佬们的项目](README.assets/感谢大佬们的项目.gif)

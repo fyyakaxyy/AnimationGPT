@@ -117,9 +117,20 @@
 - “一个人蓄力重击挥出大剑。”
 - “一个人扎马步，左脚为轴，右脚发力向前，双臂随着腰向前蓄力挥动大剑。”
 
+**DeBug**
+
+原词性标注程序会过滤阿拉伯数字，导致帧数信息标注失败：
+
+```python
+# if not word.isalpha():
+#   continue
+if not word.isalnum():
+    continue
+```
 
 
-## Motion-X
+
+# MotionX-to-HumanML3D
 
 - 从文本标注的内容来看，Motion-X和HumanAct12更接近；
 - Motion-X提供的数据是SMPL-X格式的。
