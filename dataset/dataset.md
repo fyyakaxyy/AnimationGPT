@@ -6,7 +6,10 @@
 
 ## soul_v1
 
-也就是最初的old文件。删除了mirror文件和[NaN文件](https://github.com/GuyTevet/motion-diffusion-model/issues/110)。
+也就是最初的old文件。
+
+1. 删除了mirror文件和[NaN文件](https://github.com/GuyTevet/motion-diffusion-model/issues/110)；
+2. 删除了帧数错误的文件。
 
 ## soul_v2
 
