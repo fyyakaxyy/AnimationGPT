@@ -17,7 +17,7 @@ Character animation generation based on text-to-motion and large models
 | soul_v1(old) | 30140<br />(-M=15070) | 1. 删除了镜像npy（mirror）后文件数是15070；<br />2. 注意：Mean.npy和Std.npy的计算不包括镜像文件；<br />3. 部分动画new_joints缺失帧数信息，导致对应的new_joint_vecs的帧数为1。 |
 | soul_v2      | 14993                 | 1. shinnobi和grappling缺失词性标注导致模型训练崩溃。         |
 | soul_v3      | 11662                 | 1. 部分标注异常，例如“The character performs the '忍义手' pose ”；<br />2. 多个标注内容重复（GPT标注问题）：<br />其中5个重复（12）、4个重复（19）、3个重复（153）、2个重复（863）。 |
-| soul_v4      | 8723                  | 1. 两版标注（一简、二简；对应的soul_v3是详细版表述）；<br />2. 侧重对root motion的方位词描述；<br />3. 增加了帧数的描述。 |
+| soul_v4      | 8714                  | 1. 两版标注（一简、二简；对应的soul_v3是详细版表述）；<br />2. 侧重对root motion的方位词描述；<br />3. 增加了帧数的描述。 |
 
 
 
