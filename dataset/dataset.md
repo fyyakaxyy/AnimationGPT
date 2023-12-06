@@ -131,6 +131,12 @@ if not word.isalnum():
     continue
 ```
 
+**get position**
+
+| ![0_out](dataset.assets/0_out.gif) | ![12_out](dataset.assets/12_out.gif) | ![12_out](dataset.assets/12_out-17018319147805.gif) |
+| ---------------------------------- | ------------------------------------ | --------------------------------------------------- |
+| ![1_out](dataset.assets/1_out.gif) | ![13_out](dataset.assets/13_out.gif) | ![13_out](dataset.assets/13_out-17018319186667.gif) |
+
 
 
 # MotionX-to-HumanML3D
