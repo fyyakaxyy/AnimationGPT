@@ -42,7 +42,7 @@ Character animation generation based on text-to-motion and large models
 
 - 混合训练在数据量上占优势，因此刷点效果不错;
 - 微调的效果最差，从网页展示的对比效果来看，数据分布被严重影响;
-- soul_v4生成的效果偏离了文本描述，但动作风格最好，而且关于帧数和方位词的验证失败了；
+- soul_v4生成结果的动作风格最好，但偏离了文本描述，而且关于帧数的验证失败了；
 
 
 
