@@ -46,6 +46,23 @@ Character animation generation based on text-to-motion and large models
 
 
 
+**Train TOKEN on soul_v4(stage1), train Pre-training and Instruction-Tuning on soul_v3(stage2/3).**
+
+| Metric                                   | soul_v3 + soul_v4 |
+| ---------------------------------------- | ----------------- |
+| Matching Score↓                          | 5.9582±0.0143     |
+| Matching Score (vald)↓ (gt for MLD/mGPT) | 5.4546±0.0040     |
+| R_precision (top 1)↑                     | 0.0711±0.0025     |
+| R_precision (top 2)↑                     | 0.1301±0.0026     |
+| R_precision (top 3)↑                     | 0.1822±0.0033     |
+| R_precision (gt top 1)↑                  | 0.0851±0.0020     |
+| R_precision (gt top 2)↑                  | 0.1526±0.0021     |
+| R_precision (gt top 3)↑                  | 0.2149±0.0025     |
+| FID↓                                     | 1.2168±0.0279     |
+| Diversity→                               | 5.5747±0.0484     |
+| Diversity (vald)→ (gt for  MLD/mGPT)     | 5.7081±0.0503     |
+| MultiModality ↑                          | 2.0575±0.0959     |
+
 
 
 ## Acknowledgments
