@@ -21,6 +21,17 @@ Character animation generation based on text-to-motion and large models
 
 
 
+**Compare**
+
+| Dataset   | Motions | Texts  | Style    | Source               |
+| --------- | ------- | ------ | -------- | -------------------- |
+| KIT-ML    | 3,911   | 6,278  | daily    | Motion Capture       |
+| HumanML3D | 14,616  | 44,970 | daily    | Motion Capture       |
+| Motion-X  | 81,084  | 95,642 | daily    | Video Reconstruction |
+| Soul      | 11,555  | 11,555 | fighting | Game Assets          |
+
+
+
 ## Experiment
 
 **evaluation on mGPT**
