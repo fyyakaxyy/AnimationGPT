@@ -1,8 +1,6 @@
 # soul
 
-数据来源：魂系动画
-
-制作流程：[HumanML3D](https://github.com/EricGuo5513/HumanML3D)
+制作流程参考[HumanML3D](https://github.com/EricGuo5513/HumanML3D)
 
 ## soul_v1
 

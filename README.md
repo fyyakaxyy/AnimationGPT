@@ -6,7 +6,9 @@
 
 [webpage](https://fyyakaxyy.github.io/animationGPT/)
 
-Character animation generation based on text-to-motion and large models
+Character animation generation based on text-to-motion and large models.
+
+
 
 ## Dataset
 
@@ -23,12 +25,12 @@ Character animation generation based on text-to-motion and large models
 
 **Compare**
 
-| Dataset   | Motions | Texts  | Style    | Source               |
-| --------- | ------- | ------ | -------- | -------------------- |
-| KIT-ML    | 3,911   | 6,278  | daily    | Motion Capture       |
-| HumanML3D | 14,616  | 44,970 | daily    | Motion Capture       |
-| Motion-X  | 81,084  | 95,642 | daily    | Video Reconstruction |
-| Soul      | 11,555  | 11,555 | fighting | Game Assets          |
+| Dataset   | Motions | Texts  | Style  | Source                         |
+| --------- | ------- | ------ | ------ | ------------------------------ |
+| KIT-ML    | 3,911   | 6,278  | Daily  | Motion Capture                 |
+| HumanML3D | 14,616  | 44,970 | Daily  | Motion Capture                 |
+| Motion-X  | 81,084  | 95,642 | Daily  | Video Reconstruction           |
+| Soul(v3)  | 11,555  | 11,555 | Combat | Digital Entertainment Products |
 
 
 
@@ -54,6 +56,10 @@ Character animation generation based on text-to-motion and large models
 - 混合训练在数据量上占优势，因此刷点效果不错;
 - 微调的效果最差，从网页展示的对比效果来看，数据分布被严重影响;
 - soul_v4生成结果的动作风格最好，但偏离了文本描述，而且关于帧数的验证失败了；
+- 视觉效果评估
+  - soul_v3符合度40%，动作80%
+  - soul_v4符合度10%，动作95%
+
 
 
 
