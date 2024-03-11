@@ -1,93 +1,170 @@
-
-
-
-
-# animationGPT
+# AnimationGPT
 
 [webpage](https://fyyakaxyy.github.io/animationGPT/)
 
-Character animation generation based on text-to-motion and large models.
+AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本项目基于[MotionGPT](https://github.com/OpenMotionLab/MotionGPT)训练模型，并且制作了首个专注于格斗风格、并配备文本描述的角色动画数据集。
+
+**Compare to current text-to-motion dataset**
+
+| Dataset   | Motions    | Texts      | Style      | Source                             |
+| --------- | ---------- | ---------- | ---------- | ---------------------------------- |
+| KIT-ML    | 3,911      | 6,278      | Daily      | Motion Capture                     |
+| HumanML3D | 14,616     | 44,970     | Daily      | Motion Capture                     |
+| Motion-X  | 81,084     | 95,642     | Daily      | Video Reconstruction               |
+| **CMP**   | **8700**   | **26,100** | **Combat** | **Digital Entertainment Products** |
+| **CMR**   | **14,883** | **14,883** | **Combat** | **Digital Entertainment Products** |
+
+与当前主流的text-to-motion数据集相比，CombatMotion具有如下特点：
+
+1. 来源于游戏资产；
+2. 具有格斗风格，动作类游戏当中的动画风格相对来说是集中的，动作类型有偏；
+3. 更详细的文本标注。
+
+## Combat Motion Dataset
+
+###  Pipline
+
+1. 获取fbx格式的游戏资产，重定向到SMPL，并读取人体关节点坐标（[参考Fbx2SMPL](https://github.com/syan2018/Fbx2SMPL)）；
+
+2. 添加文本标注。对于每一条动画，首先从动作类型、武器类型、攻击类型、方位词、力量感描述词、速度描述词和困惑描述词这几个方面添加人工标注，部分词表如下所示：
+
+   | **Action  type** | **Weapon  type** | **Attack  type** | **Locative  words** | **Power**      | **Speed**     | **Fuzzy** |
+   | ---------------- | ---------------- | ---------------- | ------------------- | -------------- | ------------- | --------- |
+   | Idle             | Bare Hand        | Left-Handed      | In-Place            | Light-Weighted | Swift         | Piercing  |
+   | Get Hit          | Sacred Seal      | Right-Handed     | Towards Left        | Steady         | Relative Fast | Slash     |
+   | Death            | Fist             | One-Handed       | Towards Right       | Heavy-Weighted | Uniform Speed | Blunt     |
+   | …                | …                | …                | …                   | …              | …             | …         |
+
+   然后通过GPT-4将这些标注连接成句子。
+
+3. 将动画和标注数据处理成[HumanML3D](https://github.com/EricGuo5513/HumanML3D)格式的数据。
 
 
 
-## Dataset
+### CombatMotionProcessed Dataset(CMP)
 
-数据集制作和其他问题：[dataset.md](./dataset/dataset.md)
+下载链接：[google driver]()
 
-| Version      | Size                  | Notes                                                        |
-| ------------ | --------------------- | ------------------------------------------------------------ |
-| soul_v1(old) | 30140<br />(-M=15070) | 1. 删除了镜像npy（mirror）后文件数是15070；<br />2. 注意：Mean.npy和Std.npy的计算不包括镜像文件；<br />3. 部分动画new_joints缺失帧数信息，导致对应的new_joint_vecs的帧数为1。 |
-| soul_v2      | 14993                 | 1. shinnobi和grappling缺失词性标注导致模型训练崩溃。         |
-| soul_v3      | 11555                 | 1. 部分标注异常，例如“The character performs the '忍义手' pose ”；<br />2. 多个标注内容重复（GPT标注问题）：<br />其中5个重复（12）、4个重复（19）、3个重复（153）、2个重复（863）。 |
-| soul_v4      | 8700                  | 1. 两版标注（一简、二简；对应的soul_v3是详细版表述）；<br />2. 侧重对root motion的方位词描述；<br />3. 增加了帧数的描述。 |
+CombatMotionRaw(CMP)是精加工的数据集，在角色动画方面，我们保留了高质量、格斗风格强的8700个动画，在文本标注方面，我们为每一条动画提供了3条文本标注，分别是精简版描述、带有感觉描述的精简版描述和详细版描述。
 
+以`CMP008388`为例：
 
-
-**Compare**
-
-| Dataset   | Motions | Texts  | Style  | Source                         |
-| --------- | ------- | ------ | ------ | ------------------------------ |
-| KIT-ML    | 3,911   | 6,278  | Daily  | Motion Capture                 |
-| HumanML3D | 14,616  | 44,970 | Daily  | Motion Capture                 |
-| Motion-X  | 81,084  | 95,642 | Daily  | Video Reconstruction           |
-| Soul(v3)  | 11,555  | 11,555 | Combat | Digital Entertainment Products |
+![CMP008388](README.assets/CMP008388.gif)
 
 
 
-## Experiment
+其对应的文本标注是：
 
-**evaluation on mGPT**
-
-| Metric                                   | soul_v3           | HSmerge           | Finetune-H+S3 | soul_v4           |
-| ---------------------------------------- | ----------------- | ----------------- | ------------- | ----------------- |
-| Matching Score↓                          | 6.1470±0.0140     | **6.1315±0.0182** | 6.1942±0.0127 | 6.2765±0.0183     |
-| Matching Score (vald)↓ (gt for MLD/mGPT) | 5.5185±0.0043     | **3.5719±0.0056** | 5.5185±0.0043 | 5.8100±0.0042     |
-| R_precision (top 1)↑                     | 0.0668±0.0018     | **0.1825±0.0028** | 0.0364±0.0018 | 0.0342±0.0012     |
-| R_precision (top 2)↑                     | 0.1250±0.0031     | **0.2781±0.0034** | 0.0697±0.0029 | 0.0673±0.0015     |
-| R_precision (top 3)↑                     | 0.1730±0.0031     | **0.3452±0.0033** | 0.1043±0.0037 | 0.0980±0.0015     |
-| R_precision (gt top 1)↑                  | 0.0929±0.0019     | **0.4466±0.0031** | 0.0929±0.0019 | 0.0312±0.0011     |
-| R_precision (gt top 2)↑                  | 0.1586±0.0023     | **0.5879±0.0024** | 0.1586±0.0023 | 0.0650±0.0011     |
-| R_precision (gt top 3)↑                  | 0.2130±0.0029     | **0.6612±0.0020** | 0.2130±0.0029 | 0.0966±0.0014     |
-| FID↓                                     | 1.3792±0.0498     | 0.9084±0.0255     | 1.9095±0.0342 | **0.4270±0.0215** |
-| Diversity→                               | **5.7904±0.0510** | 8.3893±0.0752     | 4.6923±0.0325 | 5.0881±0.0410     |
-| Diversity (vald)→ (gt for  MLD/mGPT)     | **5.6903±0.0740** | 8.5648±0.0603     | 5.6903±0.0740 | 5.1668±0.0650     |
-| MultiModality ↑                          | 3.6207±0.0872     | **5.8888±0.1620** | 2.9249±0.0914 | 1.8734±0.0851     |
-
-- 混合训练在数据量上占优势，因此刷点效果不错;
-- 微调的效果最差，从网页展示的对比效果来看，数据分布被严重影响;
-- soul_v4生成结果的动作风格最好，但偏离了文本描述，而且关于帧数的验证失败了；
-- 视觉效果评估
-  - soul_v3符合度40%，动作80%
-  - soul_v4符合度10%，动作95%
+```
+weapon attack a man holding a Katana,executing a Charged Heavy Attack,Dual Wielding,root motion get Forward, Steady,Powerful and Relative Slow,First slow then fast,Cleanly.
+weapon attack a man holding a Katana,executing a Charged Heavy Attack,Dual Wielding,root motion get Forward, Steady,Powerful and Relative Slow,First slow then fast,Cleanly,which make a sense of Piercing,Wide Open,Charged,Accumulating strength.
+The character grips the wedge with both hands and charges for a powerful strike. They firmly lower their body, twist to the left, lunge forward with a bow step, and stab with the sword held in both hands.
+```
 
 
 
+### CombatMotionRaw Dataset(CMR)
 
-**Train TOKEN on soul_v4(stage1), train Pre-training and Instruction-Tuning on soul_v3(stage2/3).**
+下载链接：[google driver]()
 
-| Metric                                   | soul_v3 + soul_v4 |
-| ---------------------------------------- | ----------------- |
-| Matching Score↓                          | 5.9582±0.0143     |
-| Matching Score (vald)↓ (gt for MLD/mGPT) | 5.4546±0.0040     |
-| R_precision (top 1)↑                     | 0.0711±0.0025     |
-| R_precision (top 2)↑                     | 0.1301±0.0026     |
-| R_precision (top 3)↑                     | 0.1822±0.0033     |
-| R_precision (gt top 1)↑                  | 0.0851±0.0020     |
-| R_precision (gt top 2)↑                  | 0.1526±0.0021     |
-| R_precision (gt top 3)↑                  | 0.2149±0.0025     |
-| FID↓                                     | 1.2168±0.0279     |
-| Diversity→                               | 5.5747±0.0484     |
-| Diversity (vald)→ (gt for  MLD/mGPT)     | 5.7081±0.0503     |
-| MultiModality ↑                          | 2.0575±0.0959     |
+CombatMotionRaw(CMR)是未经过精加工的数据集，具备14,883个的动画数据（CMP是CMR的子集），但每条动画只提供一个文本标注。另外，CMR中的文本标注是标注词的简单连接，在项目研发中发现这种标注训练的模型性能较差，因此最终未采用这种格式。
+
+文本标注示例：
+
+```
+weapon attack curved sword curved greatsword right-handed one-handed charged heavy attack forward steady powerful charged accumulating strength cleanly first slow then fast slash smooth and coherent wide open featherlike roundabout lean over and twist your waist to the left step forward with your right leg store your right hand from the left back swing it diagonally downward and swing two circles.
+```
+
+CMR具备更丰富的动画数据，可惜标注不够精细，你可以自行读取数据集中的文本标注并优化。
+
+## Model and Evaluation
+
+以下分别是在CMR数据集上用不同算法训练的模型：
+
+- MotionGPT：[google driver]()
+- MLD：[google driver]()
+- MDM：[google driver]()
+
+**Evaluation on CMR**
+
+| Metric                                    | MotionGPT | MLD  | MDM  |
+| ----------------------------------------- | --------- | ---- | ---- |
+| Matching Score↓                           |           |      |      |
+| Matching Score (vald)↓ (gt for  MLD/mGPT) |           |      |      |
+| R_precision (top 1)↑                      |           |      |      |
+| R_precision (top 2)↑                      |           |      |      |
+| R_precision (top 3)↑                      |           |      |      |
+| R_precision (gt top 1)↑                   |           |      |      |
+| R_precision (gt top 2)↑                   |           |      |      |
+| R_precision (gt top 3)↑                   |           |      |      |
+| FID↓                                      |           |      |      |
+| Diversity→                                |           |      |      |
+| Diversity (vald)→ (gt for  MLD/mGPT)      |           |      |      |
+| MultiModality ↑                           |           |      |      |
+
+## Some Advice
+
+在数据集制作和模型训练过程中，你可能会在文本标注、模型训练、数据增强等方面遇到一些问题。基于我们的经验，给出以下建议：
+
+### 文本标注错误导致模型训练崩溃
+
+如果你也是采用HumanML3D的pipline处理数据，你可能会遇到以下问题，它们将会导致模型训练崩溃：
+
+- 文本描述中包含中文字符或中文标点，例如"The character performs the '忍义手' pose "；
+- 部分词语在词性标注时被遗漏，例如标注程序无法识别并标注"shinnobi"和"grappling";
+- 部分数学符号，例如角度"°"被识别为异常字符。
+
+### 文本标注词的探索
+
+- 在标注文本中添加对root motion的方位词描述，可以让模型学习到方位词；
+- 在标注文本中添加帧数信息，并不能让模型学会控制生成时长（或帧数）；
+- 文本标注越详细、同一条动画的不同标注数量越多，模型的性能越好。
+
+### 混合训练
+
+将HumanML3D和CMP数据集混合起来训练模型，在评估指标上会带来很大的提升，但评估指标和视觉效果并不等价，混合训练的模型生成的部分结果不如单独使用CMP数据集训练的模型生成效果，这是因为两个数据集动作风格的差异改变了数据分布，进而影响了模型的性能。
+
+### MotionX-to-HumanML3D
+
+我们尝试过将Motion-X转换成HumanML3D的格式，用于预训练模型，或者扩充VQ-VAE的码本长度来增加动作的丰富性和风格化程度。但数据转换的工作失败了。以下是相关的工作：
+
+- 从文本标注的内容来看，Motion-X和HumanAct12更接近；
+- Motion-X提供的数据是SMPL-X格式的。
+
+| 压缩文件                     | 解压             | 说明 | size                        |
+| ---------------------------- | ---------------- | ---- | --------------------------- |
+| motionx_face_motion_data.zip | face_motion_data |      | 28,837 个文件，389 个文件夹 |
+| motionx_seq_face_text.zip    | face_texts       |      | 81,314 个文件，684 个文件夹 |
+| motionx_seq_text.zip         | semantic_labels  |      | 52,477 个文件，296 个文件夹 |
+| motionx_smplx.zip            | motion_data      |      | 52,477 个文件，297 个文件夹 |
 
 
+
+**pipline：**Motion-X(npy) $\rightarrow$ AMASS(npz)$\rightarrow$ HumanML3D(npy)
+
+**转移矩阵测试**：从以下结果来看，转移矩阵只是用于调整全身姿态的，问题在于部分动作特征缺失。比如第一列的“Ways_To_Catch_360”，骨骼人体缺少了旋转的动作，错误可能出在MotionX2AMASS这一步，缺失了一些参数。
+
+```py
+trans_matrix = np.array([[1.0, 0.0, 0.0],
+                 [0.0, 0.0, 1.0],
+                 [0.0, 1.0, 0.0]])
+```
+
+
+
+|              | 转移矩阵                                                     | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360-17010707575392.gif) | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life.gif) |
+| :----------: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+|  HumanML3D   | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & 1.0 \\   0.0 & 1.0 & 0.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360.gif)    | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly-17010708199956.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life-17010708605438.gif) |
+|   标准姿态   | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 1.0 & 0.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360-170107087767710.gif) | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly-170107088180712.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life-170107090144014.gif) |
+| 绕x轴旋转90° | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & -1.0 \\   0.0 & 1.0 & 0.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360-170108484829633.gif) | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly-170108485228635.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life-170108485926937.gif) |
+| 绕z轴旋转90° | $$\left[ \begin{matrix}   0.0 & -1.0 & 0.0 \\   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360-170108529100139.gif) | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly-170108529447941.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life-170108529801843.gif) |
+|     偏转     | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 1.0 & 1.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360-170107094741221.gif) | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly-170107611374831.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life-170107096431925.gif) |
 
 ## Acknowledgments
 
+- Algorithm: Thanks to [MLD](https://github.com/ChenFengYe/motion-latent-diffusion), [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) and [MDM](https://github.com/GuyTevet/motion-diffusion-model).
 - Dataset: Thanks to [HumanML3D](https://github.com/EricGuo5513/HumanML3D) and [Motion-X](https://github.com/IDEA-Research/Motion-X).
-
-- algorithm: Thanks to [MLD](https://github.com/ChenFengYe/motion-latent-diffusion), [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) and [MDM](https://github.com/GuyTevet/motion-diffusion-model).
 
 Our code is partially borrowing from them.
 
-![感谢大佬们的项目](README.assets/感谢大佬们的项目.gif)
+## Citation
