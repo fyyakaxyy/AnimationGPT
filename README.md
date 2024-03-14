@@ -1,7 +1,5 @@
 # AnimationGPT
 
-[webpage](https://fyyakaxyy.github.io/animationGPT/)
-
 AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本项目基于[MotionGPT](https://github.com/OpenMotionLab/MotionGPT)训练模型，并且制作了首个专注于格斗风格、并配备文本描述的角色动画数据集。
 
 **Compare to current text-to-motion dataset**
@@ -39,7 +37,7 @@ AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本�
 
 3. 将动画和标注数据处理成[HumanML3D](https://github.com/EricGuo5513/HumanML3D)格式的数据。
 
-
+![CombatMotion](README.assets/CombatMotion.png)
 
 ### CombatMotionProcessed Dataset(CMP)
 
@@ -85,22 +83,22 @@ CMR具备更丰富的动画数据，可惜标注不够精细，你可以自行�
 - MLD：[google driver]()
 - MDM：[google driver]()
 
-**Evaluation on CMR**
+**Evaluation on CMP**
 
-| Metric                                    | MotionGPT | MLD  | MDM  |
-| ----------------------------------------- | --------- | ---- | ---- |
-| Matching Score↓                           |           |      |      |
-| Matching Score (vald)↓ (gt for  MLD/mGPT) |           |      |      |
-| R_precision (top 1)↑                      |           |      |      |
-| R_precision (top 2)↑                      |           |      |      |
-| R_precision (top 3)↑                      |           |      |      |
-| R_precision (gt top 1)↑                   |           |      |      |
-| R_precision (gt top 2)↑                   |           |      |      |
-| R_precision (gt top 3)↑                   |           |      |      |
-| FID↓                                      |           |      |      |
-| Diversity→                                |           |      |      |
-| Diversity (vald)→ (gt for  MLD/mGPT)      |           |      |      |
-| MultiModality ↑                           |           |      |      |
+| Metric                              | MotionGPT      | MLD            | MDM            |
+| ----------------------------------- | -------------- | -------------- | -------------- |
+| Matching  Score↓                    | 5.426  ± 0.017 | 5.753  ± 0.019 | 5.179  ± 0.013 |
+| Matching  Score (Ground Truth)↓     | 5.166  ± 0.012 | 5.177  ± 0.018 | 7.220  ± 0.018 |
+| R_precision  (top 1)↑               | 0.044  ± 0.002 | 0.048  ± 0.002 | 0.053  ± 0.002 |
+| R_precision  (top 2)↑               | 0.084  ± 0.003 | 0.089  ± 0.003 | 0.097  ± 0.003 |
+| R_precision  (top 3)↑               | 0.122  ± 0.003 | 0.126  ± 0.003 | 0.136  ± 0.004 |
+| R_precision  (top 1)(Ground Truth)↑ | 0.050  ± 0.002 | 0.051  ± 0.002 | 0.030  ± 0.001 |
+| R_precision  (top 2)(Ground Truth)↑ | 0.094  ± 0.002 | 0.095  ± 0.003 | 0.063  ± 0.002 |
+| R_precision  (top 3)(Ground Truth)↑ | 0.133  ± 0.003 | 0.134  ± 0.004 | 0.096  ± 0.002 |
+| FID↓                                | 0.531  ± 0.018 | 1.240  ± 0.036 | 0.019  ± 0.001 |
+| Diversity→                          | 5.143  ± 0.052 | 5.269  ± 0.044 | 5.191  ± 0.036 |
+| Diversity  (Ground Truth)→          | 5.188  ± 0.070 | 5.200  ± 0.049 | 3.364  ± 0.080 |
+| MultiModality  ↑                    | 1.793 ± 0.094  | 2.618 ± 0.115  | 2.463 ± 0.102  |
 
 ## Some Advice
 
@@ -131,16 +129,7 @@ CMR具备更丰富的动画数据，可惜标注不够精细，你可以自行�
 - 从文本标注的内容来看，Motion-X和HumanAct12更接近；
 - Motion-X提供的数据是SMPL-X格式的。
 
-| 压缩文件                     | 解压             | 说明 | size                        |
-| ---------------------------- | ---------------- | ---- | --------------------------- |
-| motionx_face_motion_data.zip | face_motion_data |      | 28,837 个文件，389 个文件夹 |
-| motionx_seq_face_text.zip    | face_texts       |      | 81,314 个文件，684 个文件夹 |
-| motionx_seq_text.zip         | semantic_labels  |      | 52,477 个文件，296 个文件夹 |
-| motionx_smplx.zip            | motion_data      |      | 52,477 个文件，297 个文件夹 |
-
-
-
-**pipline：**Motion-X(npy) $\rightarrow$ AMASS(npz)$\rightarrow$ HumanML3D(npy)
+**pipline**：Motion-X(npy) $\rightarrow$ AMASS(npz)$\rightarrow$ HumanML3D(npy)
 
 **转移矩阵测试**：从以下结果来看，转移矩阵只是用于调整全身姿态的，问题在于部分动作特征缺失。比如第一列的“Ways_To_Catch_360”，骨骼人体缺少了旋转的动作，错误可能出在MotionX2AMASS这一步，缺失了一些参数。
 
