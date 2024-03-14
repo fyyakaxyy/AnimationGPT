@@ -122,16 +122,16 @@ CMR具备更丰富的动画数据，可惜标注不够精细，你可以自行�
 
 将HumanML3D和CMP数据集混合起来训练模型，在评估指标上会带来很大的提升，但评估指标和视觉效果并不等价，混合训练的模型生成的部分结果不如单独使用CMP数据集训练的模型生成效果，这是因为两个数据集动作风格的差异改变了数据分布，进而影响了模型的性能。
 
-### MotionX-to-HumanML3D
+### Motion-X-to-HumanML3D
 
-我们尝试过将Motion-X转换成HumanML3D的格式，用于预训练模型，或者扩充VQ-VAE的码本长度来增加动作的丰富性和风格化程度。但数据转换的工作失败了。以下是相关的工作：
+我们尝试过将Motion-X转换成HumanML3D的格式，用于预训练模型，或者扩充VQ-VAE的码本长度来增加动作的丰富性和风格化程度，但数据转换的工作失败了。以下是相关的工作：
 
 - 从文本标注的内容来看，Motion-X和HumanAct12更接近；
 - Motion-X提供的数据是SMPL-X格式的。
 
 **pipline**：Motion-X(npy) $\rightarrow$ AMASS(npz)$\rightarrow$ HumanML3D(npy)
 
-**转移矩阵测试**：从以下结果来看，转移矩阵只是用于调整全身姿态的，问题在于部分动作特征缺失。比如第一列的“Ways_To_Catch_360”，骨骼人体缺少了旋转的动作，错误可能出在MotionX2AMASS这一步，缺失了一些参数。
+**转移矩阵测试**：从以下结果来看，转移矩阵只是用于调整全身姿态的，问题在于部分动作特征缺失。比如第一列的“Ways_To_Catch_360”，骨骼人体缺少了旋转的动作，错误可能出在Motion-X-to-AMASS这一步，缺失了一些参数。
 
 ```py
 trans_matrix = np.array([[1.0, 0.0, 0.0],
@@ -141,13 +141,13 @@ trans_matrix = np.array([[1.0, 0.0, 0.0],
 
 
 
-|              | 转移矩阵                                                     | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360-17010707575392.gif) | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life.gif) |
-| :----------: | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-|  HumanML3D   | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & 1.0 \\   0.0 & 1.0 & 0.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360.gif)    | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly-17010708199956.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life-17010708605438.gif) |
-|   标准姿态   | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 1.0 & 0.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360-170107087767710.gif) | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly-170107088180712.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life-170107090144014.gif) |
-| 绕x轴旋转90° | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & -1.0 \\   0.0 & 1.0 & 0.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360-170108484829633.gif) | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly-170108485228635.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life-170108485926937.gif) |
-| 绕z轴旋转90° | $$\left[ \begin{matrix}   0.0 & -1.0 & 0.0 \\   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360-170108529100139.gif) | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly-170108529447941.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life-170108529801843.gif) |
-|     偏转     | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 1.0 & 1.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360](README.assets/Ways_To_Catch_360-170107094741221.gif) | ![Ways_To_Catch_A_Fly](README.assets/Ways_To_Catch_A_Fly-170107611374831.gif) | ![Ways_To_Catch_Save_A_Life](README.assets/Ways_To_Catch_Save_A_Life-170107096431925.gif) |
+|              | 转移矩阵                                                     | ![](README.assets/Ways_To_Catch_360-17010707575392.gif)  | ![](README.assets/Ways_To_Catch_A_Fly.gif)                 | ![](README.assets/Ways_To_Catch_Save_A_Life.gif)             |
+| :----------: | ------------------------------------------------------------ | -------------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
+|  HumanML3D   | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & 1.0 \\   0.0 & 1.0 & 0.0  \end{matrix}  \right]$$ | ![](README.assets/Ways_To_Catch_360.gif)                 | ![](README.assets/Ways_To_Catch_A_Fly-17010708199956.gif)  | ![](README.assets/Ways_To_Catch_Save_A_Life-17010708605438.gif) |
+|   标准姿态   | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 1.0 & 0.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![](README.assets/Ways_To_Catch_360-170107087767710.gif) | ![](README.assets/Ways_To_Catch_A_Fly-170107088180712.gif) | ![](README.assets/Ways_To_Catch_Save_A_Life-170107090144014.gif) |
+| 绕x轴旋转90° | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & -1.0 \\   0.0 & 1.0 & 0.0  \end{matrix}  \right]$$ | ![](README.assets/Ways_To_Catch_360-170108484829633.gif) | ![](README.assets/Ways_To_Catch_A_Fly-170108485228635.gif) | ![](README.assets/Ways_To_Catch_Save_A_Life-170108485926937.gif) |
+| 绕z轴旋转90° | $$\left[ \begin{matrix}   0.0 & -1.0 & 0.0 \\   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![](README.assets/Ways_To_Catch_360-170108529100139.gif) | ![](README.assets/Ways_To_Catch_A_Fly-170108529447941.gif) | ![](README.assets/Ways_To_Catch_Save_A_Life-170108529801843.gif) |
+|     偏转     | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 1.0 & 1.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![](README.assets/Ways_To_Catch_360-170107094741221.gif) | ![](README.assets/Ways_To_Catch_A_Fly-170107611374831.gif) | ![](README.assets/Ways_To_Catch_Save_A_Life-170107096431925.gif) |
 
 ## Acknowledgments
 
