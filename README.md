@@ -133,7 +133,7 @@ CMR具备更丰富的动画数据，可惜标注不够精细，你可以自行�
 
 **转移矩阵测试**：从以下结果来看，转移矩阵 `trans_matrix` 只是用于调整全身姿态的，问题在于部分动作特征缺失。比如“Ways_To_Catch_360”，人体骨骼动画缺少了旋转的动作，错误可能出在Motion-X-to-AMASS这一步，缺失了一些参数。
 
-|              | 转移矩阵                                                     | ![Ways_To_Catch_SMPL](README.assets/Ways_To_Catch_SMPL.gif)  |
+|              | `trans_matrix`                                               | ![Ways_To_Catch_SMPL](README.assets/Ways_To_Catch_SMPL.gif)  |
 | :----------: | ------------------------------------------------------------ | ------------------------------------------------------------ |
 |  HumanML3D   | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 0.0 & 1.0 \\   0.0 & 1.0 & 0.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360_HML](README.assets/Ways_To_Catch_360_HML.gif) |
 |   标准姿态   | $$\left[ \begin{matrix}   1.0 & 0.0 & 0.0 \\   0.0 & 1.0 & 0.0 \\   0.0 & 0.0 & 1.0  \end{matrix}  \right]$$ | ![Ways_To_Catch_360_Original](README.assets/Ways_To_Catch_360_Original.gif) |
