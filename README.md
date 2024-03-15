@@ -1,6 +1,6 @@
 # AnimationGPT
 
-AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本项目基于[MotionGPT](https://github.com/OpenMotionLab/MotionGPT)训练模型，并且制作了首个专注于格斗风格、并配备文本描述的角色动画数据集。
+AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本项目基于[MotionGPT](https://github.com/OpenMotionLab/MotionGPT)训练模型，并且制作了首个专注于格斗风格、并配备文本描述的角色动画数据集CombatMotion。
 
 **Compare to current text-to-motion dataset**
 
@@ -45,13 +45,7 @@ AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本�
 
 CombatMotionRaw(CMP)是精加工的数据集，在角色动画方面，我们保留了高质量、格斗风格强的8700个动画，在文本标注方面，我们为每一条动画提供了3条文本标注，分别是精简版描述、带有感觉描述的精简版描述和详细版描述。
 
-以`CMP008388`为例：
-
-![CMP008388](README.assets/CMP008388.gif)
-
-
-
-其对应的文本标注是：
+以`CMP008388`为例，其对应的文本标注是：
 
 ```
 weapon attack a man holding a Katana,executing a Charged Heavy Attack,Dual Wielding,root motion get Forward, Steady,Powerful and Relative Slow,First slow then fast,Cleanly.
@@ -106,13 +100,13 @@ CMR具备更丰富的动画数据，可惜标注不够精细，你可以自行�
 
 ### 文本标注错误导致模型训练崩溃
 
-如果你也是采用HumanML3D的pipline处理数据，你可能会遇到以下问题，它们将会导致模型训练崩溃：
+如果采用HumanML3D的pipline处理数据，可能会遇到以下问题，它们将会导致模型训练崩溃：
 
-- 文本描述中包含中文字符或中文标点，例如"The character performs the '忍义手' pose "；
-- 部分词语在词性标注时被遗漏，例如标注程序无法识别并标注"shinnobi"和"grappling";
+- 文本描述中包含中文字符或中文标点；
+- 部分词语无法成功添加词性标注;
 - 部分数学符号，例如角度"°"被识别为异常字符。
 
-### 文本标注词的探索
+### 文本标注的探索
 
 - 在标注文本中添加对root motion的方位词描述，可以让模型学习到方位词；
 - 在标注文本中添加帧数信息，并不能让模型学会控制生成时长（或帧数）；
@@ -120,14 +114,11 @@ CMR具备更丰富的动画数据，可惜标注不够精细，你可以自行�
 
 ### 混合训练
 
-将HumanML3D和CMP数据集混合起来训练模型，在评估指标上会带来很大的提升，但评估指标和视觉效果并不等价，混合训练的模型生成的部分结果不如单独使用CMP数据集训练的模型生成效果，这是因为两个数据集动作风格的差异改变了数据分布，进而影响了模型的性能。
+将HumanML3D、KIT-ML和CMP数据集混合起来训练模型，在评估指标上会带来巨大提升，但评估指标和视觉效果并不等价，对于部分生成结果，混合训练的模型表现不如单独使用CMP数据集训练的模型，这是因为不同数据集动作风格的差异改变了数据分布，进而影响了模型的性能。
 
 ### Motion-X-to-HumanML3D
 
 我们尝试过将Motion-X转换成HumanML3D的格式，用于预训练模型，或者扩充VQ-VAE的码本长度来增加动作的丰富性和风格化程度，但数据转换的工作失败了。以下是相关的工作：
-
-- 从文本标注的内容来看，Motion-X和HumanAct12更接近；
-- Motion-X提供的数据是SMPL-X格式的。
 
 **pipline** ：Motion-X(npy) $\rightarrow$ AMASS(npz) $\rightarrow$ HumanML3D(npy)
 
