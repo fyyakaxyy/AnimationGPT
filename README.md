@@ -120,7 +120,7 @@ However, evaluation metrics and visual effects are not equivalent. For some gene
 
 ### Motion-X-to-HumanML3D
 
-We have attempted to convert [Motion-X](https://github.com/IDEA-Research/Motion-X) into the HumanML3D format for pre-training models or to expand the codebook length of VQ-VAE to increase the richness and stylization of actions. However, the work on data conversion failed. The specific content and code can be viewed [here](Motion-X-to-HumanML3D\Motion-X-to-HumanML3D.md).
+We have attempted to convert [Motion-X](https://github.com/IDEA-Research/Motion-X) into the HumanML3D format for pre-training models or to expand the codebook length of VQ-VAE to increase the richness and stylization of actions. However, the work on data conversion failed. The specific content and code can be viewed [here](Motion-X-to-HumanML3D/Motion-X-to-HumanML3D.md).
 
 ## Acknowledgments
 
