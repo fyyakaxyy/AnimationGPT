@@ -41,7 +41,7 @@ Compared to the current text-to-motion datasets, CombatMotion has the following 
 
 ### CombatMotionProcessed Dataset(CMP)
 
-下载链接：[google driver]()
+Download: [google driver]()
 
 CombatMotionProcessed(CMP) is a refined dataset that, in terms of character animation, retains 8,700 high-quality animations with a strong fighting style. In terms of textual annotations, we provide three text annotations for each animation: a concise description, a concise description with sensory details, and a detailed description.
 
@@ -57,7 +57,7 @@ The character grips the wedge with both hands and charges for a powerful strike.
 
 ### CombatMotionRaw Dataset(CMR)
 
-下载链接：[google driver]()
+Download: [google driver]()
 
 CombatMotionRaw (CMR) is an unrefined dataset containing 14,883 animation entries (CMP is a subset of CMR), but each animation is only provided with one textual annotation. Moreover, the textual annotations in CMR consist of simple concatenations of annotated words. It was found during project development that models trained with this type of annotation performed poorly, thus this format was ultimately not adopted.
 
