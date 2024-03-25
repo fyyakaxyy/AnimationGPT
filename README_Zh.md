@@ -118,7 +118,7 @@ CMR具备更丰富的动画数据，可惜标注不够精细，你可以自行�
 
 ### Motion-X到HumanML3D的格式转换
 
-我们尝试过将[Motion-X](https://github.com/IDEA-Research/Motion-X)转换成HumanML3D的格式，用于预训练模型，或者扩充VQ-VAE的码本长度来增加动作的丰富性和风格化程度，但数据转换的工作失败了。具体内容和代码在[此处](Motion-X-to-HumanML3D\Motion-X-to-HumanML3D.md)查看。
+我们尝试过将[Motion-X](https://github.com/IDEA-Research/Motion-X)转换成HumanML3D的格式，用于预训练模型，或者扩充VQ-VAE的码本长度来增加动作的丰富性和风格化程度，但数据转换的工作失败了。具体内容和代码在[此处](Motion-X-to-HumanML3D/Motion-X-to-HumanML3D.md)查看。
 
 ## 致谢
 
