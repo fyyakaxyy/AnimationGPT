@@ -1,5 +1,7 @@
 # AnimationGPT
 
+[webpage（coming soon：网页备案中）]()
+
 AnimationGPT is a project focused on generating combat style character animations based on text. This project is trained on the [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) model and has produced the first character animation dataset dedicated to combat styles, named CombatMotion, which comes with textual descriptions.
 
 **Compare to current text-to-motion dataset**
@@ -143,6 +145,8 @@ If you find this repository useful, please consider citing it as follows:
 ```
 
 # AnimationGPT（中文）
+
+[webpage（coming soon：网页备案中）]()
 
 AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本项目基于[MotionGPT](https://github.com/OpenMotionLab/MotionGPT)训练模型，并且制作了首个专注于格斗风格、并配备文本描述的角色动画数据集CombatMotion。
 
