@@ -59,7 +59,7 @@ The character grips the wedge with both hands and charges for a powerful strike.
 
 ### CombatMotionRaw Dataset(CMR)
 
-Download: [google driver](https://drive.google.com/file/d/148AwoovJrnh4F0q_HbU83WCWwFooLSZj/view?usp=drive_link)
+Download: [google drive](https://drive.google.com/file/d/148AwoovJrnh4F0q_HbU83WCWwFooLSZj/view?usp=drive_link)
 
 CombatMotionRaw (CMR) is an unrefined dataset containing 14,883 animation entries (CMP is a subset of CMR), but each animation is only provided with one textual annotation. Moreover, the textual annotations in CMR consist of simple concatenations of annotated words. It was found during project development that models trained with this type of annotation performed poorly, thus this format was ultimately not adopted.
 
