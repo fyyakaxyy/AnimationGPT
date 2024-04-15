@@ -10,7 +10,7 @@ AnimationGPT is a project focused on generating combat style character animation
 | ------------------------------------------------------------ | ---------- | ---------- | ---------- | -------------------- |
 | [KIT-ML](https://motion-annotation.humanoids.kit.edu/dataset/) | 3,911      | 6,278      | Daily Life | Motion Capture       |
 | [HumanML3D](https://github.com/EricGuo5513/HumanML3D)        | 14,616     | 44,970     | Daily Life | Motion Capture       |
-| [Motion-X](https://github.com/IDEA-Research/Motion-X)        | 81,084     | 95,642     | Daily Life | Video Reconstruction |
+| [Motion-X](https://github.com/IDEA-Research/Motion-X)        | 81,084     | 81,084     | Daily Life | Video Reconstruction |
 | **CMP**                                                      | **8700**   | **26,100** | **Combat** | **Game**             |
 | **CMR**                                                      | **14,883** | **14,883** | **Combat** | **Game**             |
 
@@ -126,7 +126,7 @@ We have attempted to convert [Motion-X](https://github.com/IDEA-Research/Motion-
 
 ## Acknowledgments
 
-- Algorithm: Thanks to [MLD](https://github.com/ChenFengYe/motion-latent-diffusion), [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) and [MDM](https://github.com/GuyTevet/motion-diffusion-model).
+- Algorithm: Thanks to [MotionGPT](https://github.com/OpenMotionLab/MotionGPT), [MLD](https://github.com/ChenFengYe/motion-latent-diffusion) and [MDM](https://github.com/GuyTevet/motion-diffusion-model).
 - Dataset: Thanks to [HumanML3D](https://github.com/EricGuo5513/HumanML3D) and [Motion-X](https://github.com/IDEA-Research/Motion-X).
 
 Our code is partially borrowing from them.
@@ -156,7 +156,7 @@ AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本�
 | ------------------------------------------------------------ | ---------- | ---------- | ---- | -------- |
 | [KIT-ML](https://motion-annotation.humanoids.kit.edu/dataset/) | 3,911      | 6,278      | 日常 | 动作捕捉 |
 | [HumanML3D](https://github.com/EricGuo5513/HumanML3D)        | 14,616     | 44,970     | 日常 | 动作捕捉 |
-| [Motion-X](https://github.com/IDEA-Research/Motion-X)        | 81,084     | 95,642     | 日常 | 视频重建 |
+| [Motion-X](https://github.com/IDEA-Research/Motion-X)        | 81,084     | 81,084     | 日常 | 视频重建 |
 | **CMP**                                                      | **8700**   | **26,100** | 格斗 | 游戏     |
 | **CMR**                                                      | **14,883** | **14,883** | 格斗 | 游戏     |
 
@@ -215,7 +215,7 @@ CombatMotionRaw(CMR)是未经过精加工的数据集，具备14,883个的动画
 weapon attack curved sword curved greatsword right-handed one-handed charged heavy attack forward steady powerful charged accumulating strength cleanly first slow then fast slash smooth and coherent wide open featherlike roundabout lean over and twist your waist to the left step forward with your right leg store your right hand from the left back swing it diagonally downward and swing two circles.
 ```
 
-CMR具备更丰富的动画数据，可惜标注不够精细，你可以自行读取数据集中的文本标注并优化。
+CMR具备更丰富的动画数据，可惜标注不够精细，您可以自行读取数据集中的文本标注并优化。
 
 
 
@@ -246,7 +246,7 @@ CMR具备更丰富的动画数据，可惜标注不够精细，你可以自行�
 
 ## 建议
 
-在数据集制作和模型训练调优的过程中，你可能会在文本标注、模型训练、数据增强等方面遇到一些问题。基于我们的经验，给出以下建议：
+在数据集制作和模型训练调优的过程中，您可能会在文本标注、模型训练、数据增强等方面遇到一些问题。基于我们的经验，给出以下建议：
 
 ### 文本标注错误导致模型训练崩溃
 
@@ -272,7 +272,7 @@ CMR具备更丰富的动画数据，可惜标注不够精细，你可以自行�
 
 ## 致谢
 
-- 算法：感谢 [MLD](https://github.com/ChenFengYe/motion-latent-diffusion)、[MotionGPT](https://github.com/OpenMotionLab/MotionGPT) 以及 [MDM](https://github.com/GuyTevet/motion-diffusion-model)。
+- 算法：感谢 [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) 、[MLD](https://github.com/ChenFengYe/motion-latent-diffusion)以及 [MDM](https://github.com/GuyTevet/motion-diffusion-model)。
 - 数据集：感谢 [HumanML3D](https://github.com/EricGuo5513/HumanML3D) 和 [Motion-X](https://github.com/IDEA-Research/Motion-X)。
 
 我们的代码部分借鉴了以上工作。
