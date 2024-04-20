@@ -23,6 +23,8 @@ AnimationGPT is a project focused on generating combat style character animation
 <video width="100%" height="auto" controls>
   <source src="README.assets/videoDemo.mp4" type="video/mp4">
 </video>
+
+
 **Compare to current text-to-motion dataset**
 
 | Dataset                                                      | Motions    | Texts      | Style      | Source               |
