@@ -10,11 +10,12 @@
         <img src="https://img.shields.io/badge/Zhihu-Article-0084FF?style=flat&logo=zhihu&logoColor=white"
              alt="Zhihu">
     </a>
-    <!-- GitHub Code Link -->
-    <a href="https://github.com/fyyakaxyy/AnimationGPT" style="text-decoration: none;">
-        <img src="https://img.shields.io/badge/GitHub-Code-black?style=flat&logo=github&logoColor=white" alt="GitHub Code">
+    <!-- Bilibili Code Link -->
+    <a href="https://www.bilibili.com/video/BV1yt421j7nR" style="text-decoration: none;">
+        <img src="https://img.shields.io/badge/Bilibili-Video-4EABE6?style=flat&logo=Bilibili&logoColor=4EABE6" alt="Bilibili">
     </a>
 </p>
+
 
 
 
@@ -208,11 +209,12 @@ If you find this repository useful, please consider citing it as follows:
         <img src="https://img.shields.io/badge/Zhihu-Article-0084FF?style=flat&logo=zhihu&logoColor=white"
              alt="Zhihu">
     </a>
-    <!-- GitHub Code Link -->
-    <a href="https://github.com/fyyakaxyy/AnimationGPT" style="text-decoration: none;">
-        <img src="https://img.shields.io/badge/GitHub-Code-black?style=flat&logo=github&logoColor=white" alt="GitHub Code">
+    <!-- Bilibili Code Link -->
+    <a href="https://www.bilibili.com/video/BV1yt421j7nR" style="text-decoration: none;">
+        <img src="https://img.shields.io/badge/Bilibili-Video-4EABE6?style=flat&logo=Bilibili&logoColor=4EABE6" alt="Bilibili">
     </a>
 </p>
+
 
 
 
