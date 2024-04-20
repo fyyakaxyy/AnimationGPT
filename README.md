@@ -1,9 +1,28 @@
 # AnimationGPT
 
-[webpage（coming soon：网页备案中）]()
+<p align="center">
+    <!-- Project Page Link -->
+    <a href="http://www.animationgpt.net" style="text-decoration: none;">
+        <img src="https://img.shields.io/badge/Project-Page-black?style=flat" alt="Project Page">
+    </a>
+    <!-- Zhihu Link -->
+    <a href="https://zhuanlan.zhihu.com/p/691984079" style="text-decoration: none;">
+        <img src="https://img.shields.io/badge/Zhihu-Article-0084FF?style=flat&logo=zhihu&logoColor=white"
+             alt="Zhihu">
+    </a>
+    <!-- GitHub Code Link -->
+    <a href="https://github.com/fyyakaxyy/AnimationGPT" style="text-decoration: none;">
+        <img src="https://img.shields.io/badge/GitHub-Code-black?style=flat&logo=github&logoColor=white" alt="GitHub Code">
+    </a>
+</p>
 
-AnimationGPT is a project focused on generating combat style character animations based on text. This project is trained on the [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) model and has produced the first character animation dataset dedicated to combat styles, named CombatMotion, which comes with textual descriptions.
 
+
+AnimationGPT is a project focused on generating combat style character animations based on text. This project is trained on the [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) and has produced the first character animation dataset dedicated to combat styles, named CombatMotion, which comes with textual descriptions.
+
+<video width="100%" height="auto" controls>
+  <source src="README.assets/videoDemo.mp4" type="video/mp4">
+</video>
 **Compare to current text-to-motion dataset**
 
 | Dataset                                                      | Motions    | Texts      | Style      | Source               |
@@ -11,7 +30,7 @@ AnimationGPT is a project focused on generating combat style character animation
 | [KIT-ML](https://motion-annotation.humanoids.kit.edu/dataset/) | 3,911      | 6,278      | Daily Life | Motion Capture       |
 | [HumanML3D](https://github.com/EricGuo5513/HumanML3D)        | 14,616     | 44,970     | Daily Life | Motion Capture       |
 | [Motion-X](https://github.com/IDEA-Research/Motion-X)        | 81,084     | 81,084     | Daily Life | Video Reconstruction |
-| **CMP**                                                      | **8700**   | **26,100** | **Combat** | **Game**             |
+| **CMP**                                                      | **8,700**  | **26,100** | **Combat** | **Game**             |
 | **CMR**                                                      | **14,883** | **14,883** | **Combat** | **Game**             |
 
 Compared to the current text-to-motion datasets, CombatMotion has the following characteristics:
@@ -19,6 +38,8 @@ Compared to the current text-to-motion datasets, CombatMotion has the following 
 1. Derived from game assets.
 2. Features a fighting style, where the animation style in action games tends to be concentrated, and the types of actions are biased.
 3. More detailed textual annotations.
+
+
 
 ## Combat Motion Dataset
 
@@ -39,7 +60,13 @@ Compared to the current text-to-motion datasets, CombatMotion has the following 
 
 3. Process the animation and annotated data into a format compatible with [HumanML3D](https://github.com/EricGuo5513/HumanML3D).
 
-![CombatMotion](README.assets/CombatMotion.png)
+
+
+<video width="100%" height="auto" controls>
+  <source src="README.assets/datasetDemo.mp4" type="video/mp4">
+</video>
+
+
 
 ### CombatMotionProcessed Dataset(CMP)
 
@@ -104,21 +131,21 @@ During the process of dataset creation and model training/tuning, you might enco
 
 If you process data using the HumanML3D pipeline, you might encounter the following issues, which can lead to model training crashes:
 
-- The textual description contains Chinese characters or Chinese punctuation;
-- Some words fail to be successfully annotated with part-of-speech tags;
+- The textual description contains Chinese characters or Chinese punctuation.
+- Some words fail to be successfully annotated with part-of-speech tags.
 - Certain mathematical symbols, such as the degree symbol "°", are recognized as abnormal characters.
 
 ### Exploration of Textual Annotations
 
-- Adding descriptions of root motion direction in the annotated text can help the model learn directional words;
-- Adding frame number information to the annotated text does not enable the model to learn how to control the duration (or number of frames) of generation;
+- Adding descriptions of root motion direction in the annotated text can help the model learn directional words.
+- Adding frame number information to the annotated text does not enable the model to learn how to control the duration (or number of frames) of generation.
 - The more detailed the textual annotations and the greater the number of different annotations for the same animation, the better the performance of the model.
 
 ### Mixed Training
 
 Mixing the HumanML3D, KIT-ML, and CMP datasets for model training can result in significant improvements in evaluation metrics. 
 
-However, evaluation metrics and visual effects are not equivalent. For some generated results, models trained on a mixed dataset perform worse than those trained solely on the CMP dataset. This is because differences in action styles between datasets change the data distribution, thereby affecting model performance.
+However, evaluation metrics and visual effects are not equivalent. For some generated results, models trained on a mixed dataset perform worse than those trained solely on the CMP dataset. Because differences in action styles between datasets change the data distribution, thereby affecting model performance.
 
 ### Motion-X-to-HumanML3D
 
@@ -137,19 +164,61 @@ If you find this repository useful, please consider citing it as follows:
 
 ```
 @misc{CombatMotion,
-  title={AnimationGPT},
+  title={AnimationGPT:An AlGC tool for generating game combat motion assets},
   author={Yihao Liao, Yiyu Fu, Ziming Cheng, Jiangfeiyang Wang},
   year={2024},
   howpublished={\url{https://github.com/fyyakaxyy/AnimationGPT}}
 }
 ```
 
+```
+@InProceedings{Guo_2022_CVPR,
+    author    = {Guo, Chuan and Zou, Shihao and Zuo, Xinxin and Wang, Sen and Ji, Wei and Li, Xingyu and Cheng, Li},
+    title     = {Generating Diverse and Natural 3D Human Motions From Text},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2022},
+    pages     = {5152-5161}
+}
+```
+
+```
+@article{jiang2024motiongpt,
+  title={Motiongpt: Human motion as a foreign language},
+  author={Jiang, Biao and Chen, Xin and Liu, Wen and Yu, Jingyi and Yu, Gang and Chen, Tao},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  year={2024}
+}
+```
+
+
+
 # AnimationGPT（中文）
 
-[webpage（coming soon：网页备案中）]()
+<p align="center">
+    <!-- Project Page Link -->
+    <a href="http://www.animationgpt.net" style="text-decoration: none;">
+        <img src="https://img.shields.io/badge/Project-Page-black?style=flat" alt="Project Page">
+    </a>
+    <!-- Zhihu Link -->
+    <a href="https://zhuanlan.zhihu.com/p/691984079" style="text-decoration: none;">
+        <img src="https://img.shields.io/badge/Zhihu-Article-0084FF?style=flat&logo=zhihu&logoColor=white"
+             alt="Zhihu">
+    </a>
+    <!-- GitHub Code Link -->
+    <a href="https://github.com/fyyakaxyy/AnimationGPT" style="text-decoration: none;">
+        <img src="https://img.shields.io/badge/GitHub-Code-black?style=flat&logo=github&logoColor=white" alt="GitHub Code">
+    </a>
+</p>
+
+
 
 AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本项目基于[MotionGPT](https://github.com/OpenMotionLab/MotionGPT)训练模型，并且制作了首个专注于格斗风格、并配备文本描述的角色动画数据集CombatMotion。
 
+<video width="100%" height="auto" controls>
+  <source src="README.assets/videoDemo.mp4" type="video/mp4">
+</video>
 **对比现有文本-动作数据集**
 
 | 数据集                                                       | 动作数量   | 文本数量   | 风格 | 来源     |
@@ -157,14 +226,16 @@ AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本�
 | [KIT-ML](https://motion-annotation.humanoids.kit.edu/dataset/) | 3,911      | 6,278      | 日常 | 动作捕捉 |
 | [HumanML3D](https://github.com/EricGuo5513/HumanML3D)        | 14,616     | 44,970     | 日常 | 动作捕捉 |
 | [Motion-X](https://github.com/IDEA-Research/Motion-X)        | 81,084     | 81,084     | 日常 | 视频重建 |
-| **CMP**                                                      | **8700**   | **26,100** | 格斗 | 游戏     |
+| **CMP**                                                      | **8,700**  | **26,100** | 格斗 | 游戏     |
 | **CMR**                                                      | **14,883** | **14,883** | 格斗 | 游戏     |
 
-与现有text-to-motion数据集相比，CombatMotion具有如下特点：
+与现有文本-动作数据集相比，CombatMotion具有如下特点：
 
 1. 来源于游戏资产。
 2. 具有格斗风格，动作类游戏当中的动画风格相对来说是集中的，动作类型有偏。
-3. 更详细的文本标注。
+3. 具有更详细的文本标注。
+
+
 
 ## Combat Motion数据集
 
@@ -185,13 +256,19 @@ AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本�
 
 3. 将动画和标注数据处理成[HumanML3D](https://github.com/EricGuo5513/HumanML3D)格式的数据。
 
-![CombatMotion](README.assets/CombatMotion.png)
+
+
+<video width="100%" height="auto" controls>
+  <source src="README.assets/datasetDemo.mp4" type="video/mp4">
+</video>
+
+
 
 ### CombatMotionProcessed数据集(CMP)
 
 下载链接：[google drive](https://drive.google.com/file/d/17tldNzQ2aFqwxwoqBAs4YqyDUnnPy8We/view?usp=drive_link)
 
-CombatMotionProcessed(CMP)是精加工的数据集，在角色动画方面，我们保留了高质量、格斗风格强的8700个动画，在文本标注方面，我们为每一条动画提供了3条文本标注，分别是精简版描述、带有感觉描述的精简版描述和详细版描述。
+CombatMotionProcessed(CMP)是精加工的数据集，在角色动画方面，我们保留了高质量、格斗风格强的8,700个动画，在文本标注方面，我们为每一条动画提供了3条文本标注，分别是精简版描述、带有感觉描述的精简版描述和详细版描述。
 
 以`CMP008388`为例，其对应的文本标注是：
 
@@ -252,14 +329,14 @@ CMR具备更丰富的动画数据，可惜标注不够精细，您可以自行�
 
 如果采用HumanML3D的pipline处理数据，可能会遇到以下问题，它们将会导致模型训练崩溃：
 
-- 文本描述中包含中文字符或中文标点；
-- 部分词语无法成功添加词性标注;
+- 文本描述中包含中文字符或中文标点。
+- 部分词语无法成功添加词性标注。
 - 部分数学符号，例如角度"°"被识别为异常字符。
 
 ### 文本标注的探索
 
-- 在标注文本中添加对root motion的方位词描述，可以让模型学习到方位词；
-- 在标注文本中添加帧数信息，并不能让模型学会控制生成时长（或帧数）；
+- 在标注文本中添加对root motion的方位词描述，可以让模型学习到方位词。
+- 在标注文本中添加帧数信息，并不能让模型学会控制生成时长（或帧数）。
 - 文本标注越详细、同一条动画的不同标注数量越多，模型的性能越好。
 
 ### 混合训练
@@ -283,10 +360,31 @@ CMR具备更丰富的动画数据，可惜标注不够精细，您可以自行�
 
 ```
 @misc{CombatMotion,
-  title={AnimationGPT},
+  title={AnimationGPT:An AlGC tool for generating game combat motion assets},
   author={Yihao Liao, Yiyu Fu, Ziming Cheng, Jiangfeiyang Wang},
   year={2024},
   howpublished={\url{https://github.com/fyyakaxyy/AnimationGPT}}
+}
+```
+
+```
+@InProceedings{Guo_2022_CVPR,
+    author    = {Guo, Chuan and Zou, Shihao and Zuo, Xinxin and Wang, Sen and Ji, Wei and Li, Xingyu and Cheng, Li},
+    title     = {Generating Diverse and Natural 3D Human Motions From Text},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2022},
+    pages     = {5152-5161}
+}
+```
+
+```
+@article{jiang2024motiongpt,
+  title={Motiongpt: Human motion as a foreign language},
+  author={Jiang, Biao and Chen, Xin and Liu, Wen and Yu, Jingyi and Yu, Gang and Chen, Tao},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  year={2024}
 }
 ```
 
