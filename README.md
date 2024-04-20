@@ -221,6 +221,8 @@ AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本�
 <video width="100%" height="auto" controls>
   <source src="README.assets/videoDemo.mp4" type="video/mp4">
 </video>
+
+
 **对比现有文本-动作数据集**
 
 | 数据集                                                       | 动作数量   | 文本数量   | 风格 | 来源     |
