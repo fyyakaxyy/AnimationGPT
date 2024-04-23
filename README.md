@@ -213,7 +213,7 @@ We have attempted to convert [Motion-X](https://github.com/IDEA-Research/Motion-
 
 ## Acknowledgments
 
-- Algorithm: Thanks to [MotionGPT](https://github.com/OpenMotionLab/MotionGPT), [MLD](https://github.com/ChenFengYe/motion-latent-diffusion) and [MDM](https://github.com/GuyTevet/motion-diffusion-model).
+- Algorithm: Thanks to [MotionGPT](https://github.com/OpenMotionLab/MotionGPT), [MLD](https://github.com/ChenFengYe/motion-latent-diffusion), [MDM](https://github.com/GuyTevet/motion-diffusion-model) and [Momask](https://github.com/EricGuo5513/momask-codes).
 - Dataset: Thanks to [HumanML3D](https://github.com/EricGuo5513/HumanML3D) and [Motion-X](https://github.com/IDEA-Research/Motion-X).
 
 Our code is partially borrowing from them.
@@ -469,7 +469,7 @@ CMR具备更丰富的动画数据，可惜标注不够精细，您可以自行�
 
 ## 致谢
 
-- 算法：感谢 [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) 、[MLD](https://github.com/ChenFengYe/motion-latent-diffusion)以及 [MDM](https://github.com/GuyTevet/motion-diffusion-model)。
+- 算法：感谢 [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) 、[MLD](https://github.com/ChenFengYe/motion-latent-diffusion)、 [MDM](https://github.com/GuyTevet/motion-diffusion-model)以及[Momask](https://github.com/EricGuo5513/momask-codes)。
 - 数据集：感谢 [HumanML3D](https://github.com/EricGuo5513/HumanML3D) 和 [Motion-X](https://github.com/IDEA-Research/Motion-X)。
 
 我们的代码部分借鉴了以上工作。
