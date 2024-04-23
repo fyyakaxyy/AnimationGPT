@@ -1,0 +1,59 @@
+NAME: AGPT
+ACCELERATOR: 'gpu'
+NUM_NODES: 1
+DEVICE: [0]
+
+TRAIN:
+  STAGE: lm_instruct
+  NUM_WORKERS: 16
+  BATCH_SIZE: 16
+  END_EPOCH: 50
+  RESUME: ''
+  PRETRAINED: 
+  PRETRAINED_VAE: 
+
+  OPTIM:
+    target: AdamW
+    params:
+      lr: 1e-4
+      betas: [0.9, 0.99]
+      weight_decay: 0.0
+
+EVAL:
+  BATCH_SIZE: 32
+  SPLIT: test
+
+TEST:
+  CHECKPOINTS: mGPT.ckpt
+  SPLIT: test
+  BATCH_SIZE: 32
+
+DATASET:
+  target: mGPT.data.HumanML3D.HumanML3DDataModule
+  CODE_PATH: TOKENS
+
+METRIC:
+  TYPE: ['TM2TMetrics', 'PredMetrics']
+
+LOSS:
+  LAMBDA_FEATURE: 1.0
+  LAMBDA_VELOCITY: 0.5
+  LAMBDA_COMMIT: 0.02
+  LAMBDA_CLS: 1.0
+  ABLATION:
+    RECONS_LOSS: 'l1_smooth'
+
+model:
+  target: mGPT.models.mgpt.MotionGPT
+  params:
+    condition: 'text'
+    task: 't2m'
+    lm: ${lm.default}
+    motion_vae: ${vq.default}
+
+LOGGER:
+  TYPE: ['tensorboard', 'wandb']
+  VAL_EVERY_STEPS: 10
+  WANDB:
+    params:
+      project: mem

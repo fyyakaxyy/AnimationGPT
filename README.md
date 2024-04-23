@@ -126,6 +126,63 @@ Here are models trained on the CMP dataset using different algorithms:
 | Diversity  (Ground Truth)→          | 5.188  ± 0.070 | 5.200  ± 0.049 | 3.364  ± 0.080 |
 | MultiModality  ↑                    | 1.793 ± 0.094  | 2.618 ± 0.115  | 2.463 ± 0.102  |
 
+
+
+## Tutorial
+
+- If you need to train a model, please download the [CMP dataset](https://drive.google.com/file/d/17tldNzQ2aFqwxwoqBAs4YqyDUnnPy8We/view?usp=drive_link). Then, follow the tutorials for [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) or other text-to-motion algorithms to set up the environment and train your model.
+
+- If you only need to use the AGPT model trained on the CMP dataset, please follow these steps:
+
+  1. Set up the environment
+
+     Our experimental environment is Ubuntu 22.04, NVIDIA GeForce RTX 4090, and CUDA 11.8
+  
+     ```
+     git clone https://github.com/OpenMotionLab/MotionGPT.git
+     cd MotionGPT
+     conda create python=3.10 --name mgpt
+     conda activate mgpt
+     pip install -r requirements.txt
+     python -m spacy download en_core_web_sm
+     mkdir deps
+     cd deps
+     bash prepare/prepare_t5.sh
+     bash prepare/download_t2m_evaluators.sh
+     ```
+
+  2. Download the [CMP dataset](https://drive.google.com/file/d/17tldNzQ2aFqwxwoqBAs4YqyDUnnPy8We/view?usp=drive_link)
+
+     Unzip the dataset into the `datasets/humanml3d` directory.
+  
+     ```
+     .
+     └── humanml3d
+         ├── new_joint_vecs
+         ├── new_joints
+         └── texts
+     ```
+
+  3. Generate animations using the model
+
+     - `git clone https://github.com/fyyakaxyy/AnimationGPT.git`
+  
+     - Copy the `tools` folder and `config_AGPT.yaml` into the `MotionGPT` directory
+  
+     - Download the [AGPT model](https://drive.google.com/file/d/1myqSqe41JpJCd0JaIu0FVPf93FI0A22L/view?usp=drive_link), place it in the `MotionGPT` directory
+     - Save the prompt in `input.txt`
+     - Run `python demo.py --cfg ./config_AGPT.yaml --example ./input.txt`
+
+     The generated result is `id_out.npy`, stored in `results/mgpt/debug--AGPT/`
+  
+  4. File format conversion
+  
+     - Convert the generated npy files to mp4 files: modify the file path in `tools/animation.py`, then run: `python animation.py`
+     - Convert the generated npy files to bvh files: modify the file path in `tools/npy2bvh/joints2bvh.py`, then run: `python joints2bvh.py`
+       Note: The code for npy2bvh is sourced from [Momask](https://github.com/EricGuo5513/momask-codes/blob/main/visualization/joints2bvh.py)
+
+
+
 ## Suggestions
 
 During the process of dataset creation and model training/tuning, you might encounter some issues in aspects like textual annotations, model training, and data augmentation. Based on our experience, we offer the following suggestions:
@@ -167,7 +224,7 @@ If you find this repository useful, please consider citing it as follows:
 
 ```
 @misc{CombatMotion,
-  title={AnimationGPT:An AlGC tool for generating game combat motion assets},
+  title={AnimationGPT:An AIGC tool for generating game combat motion assets},
   author={Yihao Liao, Yiyu Fu, Ziming Cheng, Jiangfeiyang Wang},
   year={2024},
   howpublished={\url{https://github.com/fyyakaxyy/AnimationGPT}}
@@ -327,6 +384,63 @@ CMR具备更丰富的动画数据，可惜标注不够精细，您可以自行�
 | Diversity  (Ground Truth)→          | 5.188  ± 0.070 | 5.200  ± 0.049 | 3.364  ± 0.080 |
 | MultiModality  ↑                    | 1.793 ± 0.094  | 2.618 ± 0.115  | 2.463 ± 0.102  |
 
+
+
+## 使用教程
+
+- 如果需要训练模型，请下载[CMP数据集](https://drive.google.com/file/d/17tldNzQ2aFqwxwoqBAs4YqyDUnnPy8We/view?usp=drive_link)，然后按照[MotionGPT](https://github.com/OpenMotionLab/MotionGPT)或其它text-to-motion算法的教程配置环境，训练模型。
+
+- 如果只需要使用CMP数据集上训练好的AGPT模型，请参考以下步骤：
+
+  1. 配置环境
+
+     我们的实验环境是Ubuntu22.04，NVIDIA GeForce RTX 4090，CUDA 11.8
+  
+     ```
+     git clone https://github.com/OpenMotionLab/MotionGPT.git
+     cd MotionGPT
+     conda create python=3.10 --name mgpt
+     conda activate mgpt
+     pip install -r requirements.txt
+     python -m spacy download en_core_web_sm
+     mkdir deps
+     cd deps
+     bash prepare/prepare_t5.sh
+     bash prepare/download_t2m_evaluators.sh
+     ```
+
+  2. 下载CMP数据集
+
+     将数据集解压到`datasets/humanml3d`路径下。
+  
+     ```
+     .
+     └── humanml3d
+         ├── new_joint_vecs
+         ├── new_joints
+         └── texts
+     ```
+
+  3. 使用模型生成动画
+
+     - `git clone https://github.com/fyyakaxyy/AnimationGPT.git`
+  
+     - 将`tools`文件夹和`config_AGPT.yaml`复制到`MotionGPT`文件夹下
+  
+     - 下载[AGPT model](https://drive.google.com/file/d/1myqSqe41JpJCd0JaIu0FVPf93FI0A22L/view?usp=drive_link)，放置在`MotionGPT`路径下
+     - 将prompt保存到`input.txt`中
+     - `python demo.py --cfg ./config_AGPT.yaml --example ./input.txt`
+
+     生成的结果是`id_out.npy`，保存在`results/mgpt/debug--AGPT/`路径下
+  
+  4. 文件格式转换
+  
+     - 将生成的npy文件转为mp4文件：修改`tools/animation.py`中的文件路径，然后运行：`python animation.py`
+     - 将生成的npy文件转为bvh文件：修改`tools/npy2bvh/joints2bvh.py`中的文件路径，然后运行：`python joints2bvh.py`
+       备注：npy2bvh的代码来源于[Momask](https://github.com/EricGuo5513/momask-codes/blob/main/visualization/joints2bvh.py)
+
+
+
 ## 建议
 
 在数据集制作和模型训练调优的过程中，您可能会在文本标注、模型训练、数据增强等方面遇到一些问题。基于我们的经验，给出以下建议：
@@ -366,7 +480,7 @@ CMR具备更丰富的动画数据，可惜标注不够精细，您可以自行�
 
 ```
 @misc{CombatMotion,
-  title={AnimationGPT:An AlGC tool for generating game combat motion assets},
+  title={AnimationGPT:An AIGC tool for generating game combat motion assets},
   author={Yihao Liao, Yiyu Fu, Ziming Cheng, Jiangfeiyang Wang},
   year={2024},
   howpublished={\url{https://github.com/fyyakaxyy/AnimationGPT}}
