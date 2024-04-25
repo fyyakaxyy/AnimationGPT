@@ -209,7 +209,11 @@ However, evaluation metrics and visual effects are not equivalent. For some gene
 
 ### Motion-X-to-HumanML3D
 
-We have attempted to convert [Motion-X](https://github.com/IDEA-Research/Motion-X) into the HumanML3D format for pre-training models or to expand the codebook length of VQ-VAE to increase the richness and stylization of actions. However, the work on data conversion failed. The specific content and code can be viewed [here](Motion-X-to-HumanML3D/Motion-X-to-HumanML3D.md).
+You can try converting [Motion-X](https://github.com/IDEA-Research/Motion-X) into the HumanML3D format for pre-training the model, and then fine-tuning it on the CMP dataset.
+
+[Motion-X-to-HumanML3D](https://github.com/IDEA-Research/Motion-X/tree/main/tomato_represenation/motionx2humanml)
+
+
 
 ## Acknowledgments
 
@@ -465,7 +469,11 @@ CMR具备更丰富的动画数据，可惜标注不够精细，您可以自行�
 
 ### Motion-X到HumanML3D的格式转换
 
-我们尝试过将[Motion-X](https://github.com/IDEA-Research/Motion-X)转换成HumanML3D的格式，用于预训练模型，或者扩充VQ-VAE的码本长度来增加动作的丰富性和风格化程度，但数据转换的工作失败了。具体内容和代码在[此处](Motion-X-to-HumanML3D/Motion-X-to-HumanML3D.md)查看。
+可以尝试将[Motion-X](https://github.com/IDEA-Research/Motion-X)转换成HumanML3D的格式，用于预训练模型，然后在CMP数据集上微调。
+
+[Motion-X-to-HumanML3D](https://github.com/IDEA-Research/Motion-X/tree/main/tomato_represenation/motionx2humanml)
+
+
 
 ## 致谢
 
