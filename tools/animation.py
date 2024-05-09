@@ -6,6 +6,7 @@ matplotlib==3.3.3
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+#plt.rcParams['animation.ffmpeg_path'] = r'D:\\T2MGPT\\ffmpeg\\bin\\ffmpeg.exe'
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.animation import FuncAnimation
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection

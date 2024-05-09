@@ -181,6 +181,51 @@ Here are models trained on the CMP dataset using different algorithms:
      - Convert the generated npy files to bvh files: modify the file path in `tools/npy2bvh/joints2bvh.py`, then run: `python joints2bvh.py`
        Note: The code for npy2bvh is sourced from [Momask](https://github.com/EricGuo5513/momask-codes/blob/main/visualization/joints2bvh.py)
 
+### Use the AGPT model trained on the CMP dataset under Windows10
+
+- When configuring the environment for [MotionGPT](https://github.com/OpenMotionLab/MotionGPT/tree/0499f16df4ddde44dfd72a7cbd7bd615af1b1a94) (step 1), some packages may still be missing after using python=3.10.6 and installing requirements.txt, just follow the instructions to install them manually.
+
+- Windows file path separator and linux are different, some path errors need to be changed to the Win system separator, such as the separator '/' change to os.sep in the [config.py](https://github.com/OpenMotionLab/MotionGPT/blob/0499f16df4ddde44dfd72a7cbd7bd615af1b1a94/mGPT/config.py#L17)
+  
+- Convert the generated npy files to mp4 files under python=3.10 environment may report errors. The matplotlib library requires version 3.3.3, but the minimum supported library version of cp310 is 3.5.0. If you use a library version higher than 3.5.0, you will encounter the following error
+
+    "ax.lines = [] AttributeError: can't set attribute"，
+
+    "ax.collections = [] AttributeError: can't set attribute"，
+
+    ani.save "ValueError: unknown file extension: .mp4"
+
+If you encounter only the first two errors when executing with matplotlib>=3.5.0, you can refer to this issue https://github.com/GuyTevet/motion-diffusion-model/issues/6
+
+If you are also experiencing unrecognized mp4 files, you need to additionally download [ffmpeg](https://github.com/GyanD/codexffmpeg/releases/tag/2024-05-06-git-96449cfeae), unzip it and modify these contents in `tools/animation.py`
+```python
+import matplotlib.pyplot as plt
+plt.rcParams['animation.ffmpeg_path'] = r'D:\\ffmpeg\\bin\\ffmpeg.exe' #ffmpeg floder
+from mpl_toolkits.mplot3d import Axes3D
+```
+
+If you have successfully generated a video file after resolving the error, but the video only has a white screen, please try switching to another python version to do the npy file format conversion. `tools/requirements.txt provides the necessary dependencies for python=3.9.19 to work properly`.
+
+- The following problems may be encountered when converting the generated npy files to bvh files
+
+  1. Some packages are missing or numpy is reporting errors. Prioritize using python=3.9.19 and install the dependencies in `tools/requirements.txt`
+
+  2. `tools/npy2bvh/joints2bvh.py` is missing some package imports. Add this code
+     ```python
+     import matplotlib
+     import matplotlib.pyplot as plt
+     from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+     import mpl_toolkits.mplot3d.axes3d as p3
+     ```
+
+  3. No such file or directory: './visualization/data/template.bvh'。Modify the following path to use the commented out version
+     ```python
+     self.template = BVH.load('./visualization/data/template.bvh', need_quater=True)
+     #self.template = BVH.load(os.path.dirname(__file__) + '\\visualization\\data\\template.bvh', need_quater=True)
+     ```
+
+  4. index 1 is out of bounds for axis 1 with size 1。Make sure there is no _in.npy file in the path of the file you want to convert, just keep _out.npy to solve the problem.
+
 
 
 ## Suggestions
@@ -442,6 +487,52 @@ CMR具备更丰富的动画数据，可惜标注不够精细，您可以自行�
      - 将生成的npy文件转为mp4文件：修改`tools/animation.py`中的文件路径，然后运行：`python animation.py`
      - 将生成的npy文件转为bvh文件：修改`tools/npy2bvh/joints2bvh.py`中的文件路径，然后运行：`python joints2bvh.py`
        备注：npy2bvh的代码来源于[Momask](https://github.com/EricGuo5513/momask-codes/blob/main/visualization/joints2bvh.py)
+
+### Windows10环境下使用训练好的模型
+
+- 为[MotionGPT](https://github.com/OpenMotionLab/MotionGPT/tree/0499f16df4ddde44dfd72a7cbd7bd615af1b1a94)配置环境时（步骤1），使用其推荐的python=3.10.6并安装完    requirements所需包可能仍然缺少一些包，按提示手动安装即可
+  linux系统和windows文件路径分隔符不同，有路径类错误需要改为win系统的分隔符，如[config.py](https://github.com/OpenMotionLab/MotionGPT/blob/0499f16df4ddde44dfd72a7cbd7bd615af1b1a94/mGPT/config.py#L17)中的分隔符'/'修改为os.sep
+  
+- npy文件转为mp4文件时，经测试不适合在python=3.10环境下执行，其matplotlib库需要使用3.3.3旧版本，但cp310最低支持的库版本为3.5.0，如果使用高于3.5.0版本的库会遇到
+
+    "ax.lines = [] AttributeError: can't set attribute"，
+
+    "ax.collections = [] AttributeError: can't set attribute"，
+
+    ani.save "ValueError: unknown file extension: .mp4"
+    
+  这三处报错
+
+如果您使用matplotlib>=3.5.0执行时只遇到了前两条报错，可以参考https://github.com/GuyTevet/motion-diffusion-model/issues/6
+
+如果您也遇到了无法识别mp4文件，需要额外下载[ffmpeg](https://github.com/GyanD/codexffmpeg/releases/tag/2024-05-06-git-96449cfeae)，解压并修改`tools/animation.py`中的
+```python
+import matplotlib.pyplot as plt
+plt.rcParams['animation.ffmpeg_path'] = r'D:\\ffmpeg\\bin\\ffmpeg.exe' #ffmpeg floder
+from mpl_toolkits.mplot3d import Axes3D
+```
+
+如果您解决报错后生成了视频文件，但视频为纯白画面，请尝试换用其他的python版本来做npy文件格式转换。`tools/requirements.txt提供了python=3.9.19环境下可以正常执行所需的依赖`
+
+- npy文件转为bvh文件时，可能会遇到以下问题
+
+  1. 缺少某些包或是numpy报错。优先使用python=3.9.19并安装`tools/requirements.txt`中的依赖
+
+  2. `tools/npy2bvh/joints2bvh.py`缺少import。为其中添加这些代码
+     ```python
+     import matplotlib
+     import matplotlib.pyplot as plt
+     from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+     import mpl_toolkits.mplot3d.axes3d as p3
+     ```
+
+  3. No such file or directory: './visualization/data/template.bvh'。修改下面的路径，换用注释掉的版本
+     ```python
+     self.template = BVH.load('./visualization/data/template.bvh', need_quater=True)
+     #self.template = BVH.load(os.path.dirname(__file__) + '\\visualization\\data\\template.bvh', need_quater=True)
+     ```
+
+  4. index 1 is out of bounds for axis 1 with size 1。大概率是你去转换那些_in.npy文件了，换一个路径只去转换有数据的_out.npy就行
 
 
 
