@@ -160,6 +160,11 @@ Download evaluator: [google drive](https://drive.google.com/file/d/1iL_PNRcgNzO5
      - Convert the generated npy files to mp4 files: modify the file path in `tools/animation.py`, then run: `python animation.py`
      - Convert the generated npy files to bvh files: modify the file path in `tools/npy2bvh/joints2bvh.py`, then run: `python joints2bvh.py`
        Note: The code for npy2bvh is sourced from [Momask](https://github.com/EricGuo5513/momask-codes/blob/main/visualization/joints2bvh.py)
+       ```cmd
+        cp -r results/mgpt/debug--AGPT/__the_batch_that_you_want_to_convert__/ tools/npy2bvh/npy_folder
+        cd tools/npy2bvh
+        python joints2bvh.py
+        ```
 
 ### Windows10 Tutorial
 
@@ -452,6 +457,11 @@ CMR具备更丰富的动画数据，可惜标注不够精细，您可以自行�
      - 将生成的npy文件转为mp4文件：修改`tools/animation.py`中的文件路径，然后运行：`python animation.py`
      - 将生成的npy文件转为bvh文件：修改`tools/npy2bvh/joints2bvh.py`中的文件路径，然后运行：`python joints2bvh.py`
        备注：npy2bvh的代码来源于[Momask](https://github.com/EricGuo5513/momask-codes/blob/main/visualization/joints2bvh.py)
+        ```cmd
+        cp -r results/mgpt/debug--AGPT/__the_batch_that_you_want_to_convert__/ tools/npy2bvh/npy_folder
+        cd tools/npy2bvh
+        python joints2bvh.py
+        ```
 
 ### Windows10使用教程
 

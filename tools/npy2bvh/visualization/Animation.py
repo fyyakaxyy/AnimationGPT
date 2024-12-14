@@ -1,7 +1,7 @@
 import operator
 
 import numpy as np
-import numpy.core.umath_tests as ut
+# import numpy.core.umath_tests as ut
 
 from visualization.Quaternions import Quaternions
 
@@ -222,8 +222,9 @@ def transforms_multiply(t0s, t1s):
         frame F and joint J multiplied
         together
     """
-
-    return ut.matrix_multiply(t0s, t1s)
+    # !remark: fail to import in numpy==1.26
+    # return ut.matrix_multiply(t0s, t1s)
+    return np.matmul(t0s, t1s)
 
 
 def transforms_inv(ts):
