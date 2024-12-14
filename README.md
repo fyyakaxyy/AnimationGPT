@@ -1,25 +1,10 @@
 # AnimationGPT
 
-<p align="center">
-    <!-- Project Page Link -->
-    <a href="http://www.animationgpt.net" style="text-decoration: none;">
-        <img src="https://img.shields.io/badge/Project-Page-black?style=flat" alt="Project Page">
-    </a>
-    <!-- Zhihu Link -->
-    <a href="https://zhuanlan.zhihu.com/p/691984079" style="text-decoration: none;">
-        <img src="https://img.shields.io/badge/Zhihu-Article-0084FF?style=flat&logo=zhihu&logoColor=white"
-             alt="Zhihu">
-    </a>
-    <!-- Bilibili Code Link -->
-    <a href="https://www.bilibili.com/video/BV1yt421j7nR" style="text-decoration: none;">
-        <img src="https://img.shields.io/badge/Bilibili-Video-4EABE6?style=flat&logo=Bilibili&logoColor=4EABE6" alt="Bilibili">
-    </a>
-</p>
-
-
-
+[ZhiHu](https://zhuanlan.zhihu.com/p/691984079) | [Bilibili](https://www.bilibili.com/video/BV1yt421j7nR) | [YouTube](https://www.youtube.com/watch?v=lpmVHNfKCpg&t=140s)
 
 AnimationGPT is a project focused on generating combat style character animations based on text. This project is trained on the [MotionGPT](https://github.com/OpenMotionLab/MotionGPT) and has produced the first character animation dataset dedicated to combat styles, named CombatMotion, which comes with textual descriptions.
+
+**Remarks:** Our online server has expired. If you want to use it, please configure the environment locally.
 
 <video width="100%" height="auto" controls>
   <source src="README.assets/videoDemo.mp4" type="video/mp4">
@@ -108,24 +93,20 @@ Here are models trained on the CMP dataset using different algorithms:
 - MLD Model：[google drive](https://drive.google.com/file/d/161gtb0vZlitE6N4B2RrKETomnTPgOQmi/view?usp=drive_link)
 - MDM Model：[google drive](https://drive.google.com/file/d/1Uzb2aFsQXq4Df3SBEc7cwXv8OobwDtto/view?usp=drive_link)
 
+Download evaluator: [google drive](https://drive.google.com/file/d/1iL_PNRcgNzO5iiAgeypkeE9eJt67IpJa/view?usp=sharing)
+
 **Evaluation on CMP**
 
-| Metric                              | MotionGPT      | MLD            | MDM             |
-| ----------------------------------- | -------------- | -------------- | --------------- |
-| Matching  Score↓                    | 5.426  ± 0.017 | 5.753  ± 0.019 | 7.220  ± 0.018  |
-| Matching  Score (Ground Truth)↓     | 5.166  ± 0.012 | 5.177  ± 0.018 | 5.179  ± 0.013  |
-| R_precision  (top 1)↑               | 0.044  ± 0.002 | 0.048  ± 0.002 | 0.030  ± 0.001  |
-| R_precision  (top 2)↑               | 0.084  ± 0.003 | 0.089  ± 0.003 | 0.063  ± 0.002  |
-| R_precision  (top 3)↑               | 0.122  ± 0.003 | 0.126  ± 0.003 | 0.096  ± 0.002  |
-| R_precision  (top 1)(Ground Truth)↑ | 0.050  ± 0.002 | 0.051  ± 0.002 | 0.053  ± 0.002  |
-| R_precision  (top 2)(Ground Truth)↑ | 0.094  ± 0.002 | 0.095  ± 0.003 | 0.097  ± 0.003  |
-| R_precision  (top 3)(Ground Truth)↑ | 0.133  ± 0.003 | 0.134  ± 0.004 | 0.136  ± 0.004  |
-| FID↓                                | 0.531  ± 0.018 | 1.240  ± 0.036 | 40.395  ± 0.424 |
-| Diversity→                          | 5.143  ± 0.052 | 5.269  ± 0.044 | 3.364  ± 0.080  |
-| Diversity  (Ground Truth)→          | 5.188  ± 0.070 | 5.200  ± 0.049 | 5.191  ± 0.036  |
-| MultiModality  ↑                    | 1.793 ± 0.094  | 2.618 ± 0.115  | 2.463 ± 0.102   |
-
-
+| **Methods**  | MultiModal Distance ↓ | R-Precision (top 1)↑ | R-Precision (top 2)↑ | R-Precision(top 3)↑ | FID ↓       | Diversity →  | MultiModality ↑ |
+| ------------ | --------------------- | -------------------- | -------------------- | ------------------- | ----------- | ------------ | --------------- |
+| Ground Truth | 3.850±0.018           | 0.335±0.004          | 0.513±0.005          | 0.628±0.005         | 0.006±0.003 | 10.098±0.102 | /               |
+| T2M          | 4.962±0.031           | 0.252±0.006          | 0.406±0.005          | 0.508±0.006         | 1.898±0.059 | 8.975±0.113  | 4.470±0.112     |
+| T2M-GPT      | 3.701±0.027           | 0.353±0.005          | 0.545±0.006          | 0.663±0.005         | 0.177±0.016 | 10.128±0.132 | 1.798±0.041     |
+| MDM          | 8.414±0.048           | 0.049±0.003          | 0.098±0.005          | 0.148±0.005         | 9.467±0.217 | 7.608±0.100  | 5.682±0.203     |
+| MLD          | 4.331±0.029           | 0.293±0.004          | 0.459±0.003          | 0.568±0.004         | 0.628±0.038 | 9.741±0.093  | 3.035±0.138     |
+| MMM          | 3.621±0.020           | 0.353±0.004          | 0.545±0.004          | 0.667±0.005         | 0.151±0.013 | 10.091±0.086 | 0.757±0.042     |
+| MoMask       | 4.138±0.025           | 0.301±0.005          | 0.481±0.004          | 0.597±0.005         | 0.383±0.018 | 9.689±0.092  | 1.968±0.049     |
+| MotionGPT    | 4.228±0.032           | 0.306±0.004          | 0.486±0.006          | 0.605±0.006         | 0.267±0.017 | 9.357±0.133  | 2.210±0.137     |
 
 ## Tutorial
 
@@ -308,26 +289,11 @@ If you find this repository useful, please consider citing it as follows:
 
 # AnimationGPT（中文）
 
-<p align="center">
-    <!-- Project Page Link -->
-    <a href="http://www.animationgpt.net" style="text-decoration: none;">
-        <img src="https://img.shields.io/badge/Project-Page-black?style=flat" alt="Project Page">
-    </a>
-    <!-- Zhihu Link -->
-    <a href="https://zhuanlan.zhihu.com/p/691984079" style="text-decoration: none;">
-        <img src="https://img.shields.io/badge/Zhihu-Article-0084FF?style=flat&logo=zhihu&logoColor=white"
-             alt="Zhihu">
-    </a>
-    <!-- Bilibili Code Link -->
-    <a href="https://www.bilibili.com/video/BV1yt421j7nR" style="text-decoration: none;">
-        <img src="https://img.shields.io/badge/Bilibili-Video-4EABE6?style=flat&logo=Bilibili&logoColor=4EABE6" alt="Bilibili">
-    </a>
-</p>
-
-
-
+[ZhiHu](https://zhuanlan.zhihu.com/p/691984079) | [Bilibili](https://www.bilibili.com/video/BV1yt421j7nR) | [YouTube](https://www.youtube.com/watch?v=lpmVHNfKCpg&t=140s)
 
 AnimationGPT是一个基于文本生成格斗风格角色动画的项目。本项目基于[MotionGPT](https://github.com/OpenMotionLab/MotionGPT)训练模型，并且制作了首个专注于格斗风格、并配备文本描述的角色动画数据集CombatMotion。
+
+**备注：**我们的线上服务器已经过期，如需使用，请在本地配置环境。
 
 <video width="100%" height="auto" controls>
   <source src="README.assets/videoDemo.mp4" type="video/mp4">
@@ -419,24 +385,20 @@ CMR具备更丰富的动画数据，可惜标注不够精细，您可以自行�
 - MLD Model：[google drive](https://drive.google.com/file/d/161gtb0vZlitE6N4B2RrKETomnTPgOQmi/view?usp=drive_link)
 - MDM Model：[google drive](https://drive.google.com/file/d/1Uzb2aFsQXq4Df3SBEc7cwXv8OobwDtto/view?usp=drive_link)
 
+下载评估文件: [google drive](https://drive.google.com/file/d/1iL_PNRcgNzO5iiAgeypkeE9eJt67IpJa/view?usp=sharing)
+
 **CMP数据集上的评估结果**
 
-| Metric                              | MotionGPT      | MLD            | MDM             |
-| ----------------------------------- | -------------- | -------------- | --------------- |
-| Matching  Score↓                    | 5.426  ± 0.017 | 5.753  ± 0.019 | 7.220  ± 0.018  |
-| Matching  Score (Ground Truth)↓     | 5.166  ± 0.012 | 5.177  ± 0.018 | 5.179  ± 0.013  |
-| R_precision  (top 1)↑               | 0.044  ± 0.002 | 0.048  ± 0.002 | 0.030  ± 0.001  |
-| R_precision  (top 2)↑               | 0.084  ± 0.003 | 0.089  ± 0.003 | 0.063  ± 0.002  |
-| R_precision  (top 3)↑               | 0.122  ± 0.003 | 0.126  ± 0.003 | 0.096  ± 0.002  |
-| R_precision  (top 1)(Ground Truth)↑ | 0.050  ± 0.002 | 0.051  ± 0.002 | 0.053  ± 0.002  |
-| R_precision  (top 2)(Ground Truth)↑ | 0.094  ± 0.002 | 0.095  ± 0.003 | 0.097  ± 0.003  |
-| R_precision  (top 3)(Ground Truth)↑ | 0.133  ± 0.003 | 0.134  ± 0.004 | 0.136  ± 0.004  |
-| FID↓                                | 0.531  ± 0.018 | 1.240  ± 0.036 | 40.395  ± 0.424 |
-| Diversity→                          | 5.143  ± 0.052 | 5.269  ± 0.044 | 3.364  ± 0.080  |
-| Diversity  (Ground Truth)→          | 5.188  ± 0.070 | 5.200  ± 0.049 | 5.191  ± 0.036  |
-| MultiModality  ↑                    | 1.793 ± 0.094  | 2.618 ± 0.115  | 2.463 ± 0.102   |
-
-
+| **Methods**  | MultiModal Distance ↓ | R-Precision (top 1)↑ | R-Precision (top 2)↑ | R-Precision(top 3)↑ | FID ↓       | Diversity →  | MultiModality ↑ |
+| ------------ | --------------------- | -------------------- | -------------------- | ------------------- | ----------- | ------------ | --------------- |
+| Ground Truth | 3.850±0.018           | 0.335±0.004          | 0.513±0.005          | 0.628±0.005         | 0.006±0.003 | 10.098±0.102 | /               |
+| T2M          | 4.962±0.031           | 0.252±0.006          | 0.406±0.005          | 0.508±0.006         | 1.898±0.059 | 8.975±0.113  | 4.470±0.112     |
+| T2M-GPT      | 3.701±0.027           | 0.353±0.005          | 0.545±0.006          | 0.663±0.005         | 0.177±0.016 | 10.128±0.132 | 1.798±0.041     |
+| MDM          | 8.414±0.048           | 0.049±0.003          | 0.098±0.005          | 0.148±0.005         | 9.467±0.217 | 7.608±0.100  | 5.682±0.203     |
+| MLD          | 4.331±0.029           | 0.293±0.004          | 0.459±0.003          | 0.568±0.004         | 0.628±0.038 | 9.741±0.093  | 3.035±0.138     |
+| MMM          | 3.621±0.020           | 0.353±0.004          | 0.545±0.004          | 0.667±0.005         | 0.151±0.013 | 10.091±0.086 | 0.757±0.042     |
+| MoMask       | 4.138±0.025           | 0.301±0.005          | 0.481±0.004          | 0.597±0.005         | 0.383±0.018 | 9.689±0.092  | 1.968±0.049     |
+| MotionGPT    | 4.228±0.032           | 0.306±0.004          | 0.486±0.006          | 0.605±0.006         | 0.267±0.017 | 9.357±0.133  | 2.210±0.137     |
 
 ## 使用教程
 
